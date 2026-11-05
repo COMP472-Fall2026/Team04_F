@@ -218,3 +218,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project-specific
+data/*
+!data/.gitkeep
+*.csv
+!results/*.csv
+submissions/*
+!submissions/.gitkeep
+
+# macOS
+.DS_Store
+
+# Model weights
+*.pt
