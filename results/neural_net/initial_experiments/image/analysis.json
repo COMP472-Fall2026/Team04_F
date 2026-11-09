@@ -1,0 +1,6 @@
+{
+  "macro_f1": 0.3287057934075769,
+  "validation_errors": 2669,
+  "selected_experiment": "dropout_comparison",
+  "generalization_gap": 0.506125
+}

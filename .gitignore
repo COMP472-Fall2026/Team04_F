@@ -228,6 +228,16 @@ data/*
 !data/.gitkeep
 *.csv
 !results/*.csv
+
+# Neural-network experiment summaries and aggregate analysis tables
+!results/neural_net/**/summary.csv
+!results/neural_net/**/experiments.csv
+!results/neural_net/**/history.csv
+!results/neural_net/**/class_report.csv
+!results/neural_net/**/confusion_matrix.csv
+!results/neural_net/**/confused_classes.csv
+# Per-example splits, errors, and predictions remain covered by *.csv.
+
 submissions/*
 !submissions/.gitkeep
 

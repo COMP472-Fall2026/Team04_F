@@ -1,0 +1,15 @@
+{
+  "task": "image",
+  "experiment": "scaling_comparison",
+  "best_epoch": 34,
+  "epochs_run": 40,
+  "train_acc": 0.6609375,
+  "val_acc": 0.3015,
+  "val_loss": 2.7580137939453127,
+  "generalization_gap": 0.35943749999999997,
+  "train_time_s": 8.232745666988194,
+  "predict_time_s": 0.003848708001896739,
+  "train_samples": 16000,
+  "val_samples": 4000,
+  "hyperparameters": "{\"activation\": \"relu\", \"batch_size\": 128, \"dropout\": 0.2, \"epochs\": 40, \"hidden\": [256, 64], \"learning_rate\": 0.001, \"optimizer\": \"adam\", \"patience\": 8, \"standardize\": false, \"weight_decay\": 0.0001}"
+}
