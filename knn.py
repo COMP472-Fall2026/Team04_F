@@ -89,6 +89,14 @@ def mark_best():
         table.loc[rows["val_acc"].idxmax(), "notes"] += " | BEST OVERALL"
     table.to_csv(KNN_RESULTS_FILE, index=False, float_format="%.4f")
 
+def per_class_metrics(cm):
+    """cm: rows = true class, columns = predicted class.
+    Returns precision, recall and F1, one value per class."""
+    correct = cm.diagonal().astype(np.float64)
+    precision = correct / np.maximum(cm.sum(axis=0), 1)    # of the points PREDICTED as c, how many truly are c
+    recall = correct / np.maximum(cm.sum(axis=1), 1)       # of the points that truly ARE c, how many we found
+    f1 = 2 * precision * recall / np.maximum(precision + recall, 1e-12)
+    return precision, recall, f1
 
 def run_one(task, data, k, power, metric, standardized, with_power, group):
     """Fit on the train split, predict the validation split, log one row. Returns the accuracy.
@@ -162,13 +170,18 @@ if __name__ == "__main__":
 
         n = NUM_CLASSES[task]
         cm = confusion_matrix(y_val, preds, n) # rows = true class, columns = predicted
-        recall = cm.diagonal() / cm.sum(axis=1) # fraction of each class found
+        precision, recall, f1 = per_class_metrics(cm)
 
         if task == "sentiment":
             print("confusion matrix (rows = true, columns = predicted; 0 neg, 1 neu, 2 pos):")
             print(cm)
-            print("recall per class (neg, neu, pos):", np.round(recall, 3))
+            print("                neg    neu    pos")
+            print("precision:    ", np.round(precision, 3))
+            print("recall:       ", np.round(recall, 3))
+            print("F1:           ", np.round(f1, 3))
         else:
+            print("macro averages (mean over the 50 classes): precision", round(float(precision.mean()), 3),
+            "| recall", round(float(recall.mean()), 3), "| F1", round(float(f1.mean()), 3))
             worst = np.argsort(recall)[:5]
             print("5 hardest classes (class, recall):", [(int(c), round(float(recall[c]), 2)) for c in worst])
             mistakes = cm.copy()
