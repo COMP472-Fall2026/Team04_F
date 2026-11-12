@@ -93,6 +93,24 @@ def adjusted_rand_index(table):
     maximum = (sum_rows + sum_cols) / 2 # the maximum number of right pairs (same cluster same class) we could get
     return (sum_cells - expected) / (maximum - expected) # see how many are right without the ones we would have gotten with luck
 
+def class_affinity(table):
+    """Entry (a, b) = chance that a random point of class a and a random point of class b
+    end up in the same cluster. High = the clustering tends to group those two classes."""
+    share = table / table.sum(axis=0) # share[c, a] = fraction of class a that sits in cluster c (how many points from a class are in each cluster)
+    return share.T @ share # (classes x classes) 
+    # the odds that if a take a random point from a class a and a random point from class b what are the odds that the two points are in the same cluster
+
+
+def top_pairs(affinity, n_top=10):
+    """The n_top pairs of different classes that are grouped together most often."""
+    n = len(affinity) # number of rows (classes)
+    pairs = []
+    for a in range(n):
+        for b in range(a + 1, n): # start inner loop at a+1 because the diagonal compares a class with itself which we want to skip
+            pairs.append((affinity[a, b], a, b)) # score (affinity) is first so that sort will sort by score
+    pairs.sort(reverse=True) # highest first
+    return pairs[:n_top]
+
 
 if __name__ == "__main__":
     set_seed()
@@ -110,8 +128,8 @@ if __name__ == "__main__":
         for k in ks[task]:
             with Timer() as t:
                 labels, centers, inert, iters = kmeans(X, k)
-            table = contingency(y, labels, k, n_classes)
-            pur, ari = purity(table), adjusted_rand_index(table)
+            table = contingency(y, labels, k, n_classes) # This builds the cluster-vs-class table from the true labels and the clusters
+            pur, ari = purity(table), adjusted_rand_index(table) # then computes the two scores from it.
             print(f"k={k:<4} purity={pur:.3f}  ARI={ari:.3f}  inertia={inert:,.0f}  "
                   f"iters={iters}  time={t.elapsed:.1f}s")
             rows.append({"task": task, "k": k, "purity": round(pur, 4), "ARI": round(ari, 4),
@@ -119,21 +137,27 @@ if __name__ == "__main__":
                          "time_s": round(t.elapsed, 2)})
 
             # Show the full cluster-vs-class table when it is small enough to read
-            if task == "sentiment" and k == 3:
+            if task == "sentiment" and k == 3: # true numbers of classes in each dataset
                 print("cluster-vs-class table (rows = cluster, columns = neg, neu, pos):")
                 print(table)
+                print("how often two classes land in the same cluster (chance would be about 0.333):")
+                for score, a, b in top_pairs(class_affinity(table), n_top=3):
+                    print(f"   classes {a} & {b}: {score:.3f}")
 
             # For images at the true k, show how clean each cluster is
-            if task == "image" and k == n_classes:
-                top = table.argmax(axis=1)
-                share = table.max(axis=1) / table.sum(axis=1)
-                order = np.argsort(share)
+            if task == "image" and k == n_classes: # true numbers of classes in each dataset
+                top = table.argmax(axis=1) # gives each cluster’s most common class
+                share = table.max(axis=1) / table.sum(axis=1) # how dominant the top class is in each cluster.
+                order = np.argsort(share) # lists the clusters from lowest share to highest
                 print("5 messiest clusters (cluster, most common class, share of cluster):")
                 print([(int(c), int(top[c]), round(float(share[c]), 2)) for c in order[:5]])
                 print("5 cleanest clusters:")
                 print([(int(c), int(top[c]), round(float(share[c]), 2)) for c in order[-5:]])
                 print("classes that are the top class of no cluster:",
                       sorted(set(range(n_classes)) - set(top.tolist())))
+                print(f"pairs of classes grouped together most often (chance would be about {1 / k:.3f}):")
+                for score, a, b in top_pairs(class_affinity(table)):
+                    print(f"   classes {a} & {b}: {score:.3f}")
 
     pd.DataFrame(rows).to_csv(os.path.join(RESULTS_DIR, "clustering_results.csv"), index=False)
     print("\nSaved results/clustering_results.csv")
