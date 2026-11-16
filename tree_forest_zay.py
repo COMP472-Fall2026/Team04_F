@@ -149,37 +149,25 @@ class DecisionTree:
 if __name__ == "__main__":
     set_seed()
 
-    # 1. Retrieve the dataset
-    X_tr, y_tr, X_val, y_val, X_test, test_ids = (get_task_data("image"))
+    for task in ["image", "sentiment"]:
+        #1. Retrieve the dataset
+        X_tr, y_tr, X_val, y_val, X_test, test_ids = get_task_data(task)
 
-    # 2. Create the decision tree
-    tree = DecisionTree(max_depth=10)
+        #2. Create the decision tree
+        tree = DecisionTree(max_depth=10)
 
-    # 3. Train the decision tree
-    tree.fit(X_tr, y_tr)
+        #3. Train the decision tree
+        tree.fit(X_tr, y_tr)
 
-    # 4. Make predictions on validation data
-    predictions = tree.predict(X_val)
+        #4. Evaluate on the training data
+        training_predictions = tree.predict(X_tr)
+        train_accuracy = accuracy(y_tr, training_predictions)
 
-    # 5. Evaluate the predictions
-    val_accuracy = accuracy(y_val, predictions)
+        #5. Evaluate on the validation data
+        val_predictions = tree.predict(X_val)
+        val_accuracy = accuracy(y_val, val_predictions)
 
-    print("Validation accuracy:", val_accuracy)
-
-for task in ["image", "sentiment"]:
-    # 1. Retrieve the dataset
-    X_tr, y_tr, X_val, y_val, X_test, test_ids = get_task_data(task)
-
-    # 2. Create the decision tree
-    tree = DecisionTree(max_depth=10)
-
-    # 3. Train the decision tree
-    tree.fit(X_tr, y_tr)
-
-    # 4. Make predictions on validation data
-    predictions = tree.predict(X_val)
-
-    # 5. Evaluate the predictions
-    val_accuracy = accuracy(y_val, predictions)
-
-    print(f"Validation accuracy ({task}): {val_accuracy}")
+        #6. Display both results
+        print(f"\nResults for {task}:")
+        print(f"Training accuracy:   {train_accuracy}")
+        print(f"Validation accuracy: {val_accuracy}")
