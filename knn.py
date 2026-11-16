@@ -57,22 +57,6 @@ class KNN:
                 predictions.append(labels[winner_position])
         return np.array(predictions)
 
-
-# Experiment settings
-RUN_SWEEPS = True    # True: redo every experiment and rewrite results/knn-results.csv
-                     # False: skip them and only run the final model (about 10 seconds)
-
-K_SWEEP = {"image": [1, 3, 5, 10, 20], "sentiment": [1, 3, 5, 10, 20, 50, 100, 200]}
-POWER_KS = {"image": [5, 10, 20], "sentiment": [20, 50, 100]}
-POWERS = [0, 1, 4, 16, 64]
-COSINE_RUNS = [(50, 0), (50, 4), (100, 0), (100, 4)] # (k, power), sentiment only
-
-KNN_RESULTS_FILE = os.path.join(RESULTS_DIR, "knn-results.csv")
-
-# Best settings found on the validation set: (k, power)
-FINAL = {"image": (20, 64), "sentiment": (100, 4)}
-
-
 def clear_knn_results():
     """Delete the old k-NN results file so a re-run doesn't duplicate rows."""
     if os.path.exists(KNN_RESULTS_FILE):
@@ -93,17 +77,22 @@ def per_class_metrics(cm):
     """cm: rows = true class, columns = predicted class.
     Returns precision, recall and F1, one value per class."""
     correct = cm.diagonal().astype(np.float64)
-    precision = correct / np.maximum(cm.sum(axis=0), 1)    # of the points PREDICTED as c, how many truly are c
-    recall = correct / np.maximum(cm.sum(axis=1), 1)       # of the points that truly ARE c, how many we found
+    precision = correct / np.maximum(cm.sum(axis=0), 1) # of the points PREDICTED as c, how many truly are c
+    recall = correct / np.maximum(cm.sum(axis=1), 1) # of the points that truly ARE c, how many we found
     f1 = 2 * precision * recall / np.maximum(precision + recall, 1e-12)
     return precision, recall, f1
 
-def run_one(task, data, k, power, metric, standardized, with_power, group):
+def run_one(task, data, k, power, metric, standardized, with_power, group, lda=None):
     """Fit on the train split, predict the validation split, log one row. Returns the accuracy.
     `group` names the experiment (it goes in the notes column)."""
     X_tr, y_tr, X_val, y_val = data
     if metric == "cosine": # cosine = Euclidean on rows of length 1
         X_tr, X_val = l2_normalize(X_tr), l2_normalize(X_val)
+
+    if lda is not None: # lda = (dims, shrink): learn on the train split only, project both splits
+        dims, shrink = lda
+        fitted = fit_lda(X_tr, y_tr, NUM_CLASSES[task], shrink)
+        X_tr, X_val = apply_lda(X_tr, fitted, dims), apply_lda(X_val, fitted, dims)
 
     model = KNN(k=k, metric=metric, power=power)
     model.fit(X_tr, y_tr)
@@ -114,21 +103,82 @@ def run_one(task, data, k, power, metric, standardized, with_power, group):
     settings = {"k": k, "metric": metric, "standardized": standardized}
     if with_power:
         settings["power"] = power
+    if lda is not None:
+        settings["lda_dims"], settings["lda_shrink"] = lda
     log_result(task, "knn", settings, val_acc=acc, predict_time_s=t.elapsed,
                notes=group, results_file=KNN_RESULTS_FILE)
-    print(f"{task:<10} k={k:<4} {metric:<9} std={standardized!s:<5} power={power:<3} val acc {acc:.4f}")
+    print(f"{task:<10} k={k:<4} {metric:<9} std={standardized!s:<5} power={power:<3} lda={lda} val acc {acc:.4f}")
     return acc
 
+def fit_lda(X, y, n_classes, shrink):
+    """Learn a supervised projection from the training data only.
+    Returns the training mean and a matrix W; project with (X - mean) @ W[:, :dims]."""
+    X = X.astype(np.float64)
+    n, d = X.shape # n = rows (number of class), d = columns (number of features)
+    overall_mean = X.mean(axis=0) # get the mean for all class features
+    Sw = np.zeros((d, d)) # within-class scatter: how spread out each class is around its own mean
+    Sb = np.zeros((d, d)) # between-class scatter: how far the class means are from the overall mean
+    for c in range(n_classes):
+        Xc = X[y == c] # get points for that class
+        class_mean = Xc.mean(axis=0) # get the mean for the the class feature (center of all the data ignoring labels)
+        gap = Xc - class_mean # get the difference between the points of the class and the class mean (how far each point is from its class center)
+        Sw += gap.T @ gap # How much points spread around their own class mean (we want this to be small)
+        diff = (class_mean - overall_mean).reshape(-1, 1)
+        Sb += len(Xc) * (diff @ diff.T) # How much class means differ from the overall mean (we want this to be big)
+    # normalize the matrices by the number of training examples
+    Sw /= n
+    Sb /= n
+    # Shrinkage: make the LDA calculations more stable and less sensitive to extremely small within-class scatter estimates (prevent overfitting)
+    Sw += (shrink * (np.trace(Sw) / d)) * np.eye(d) # trace gives the sum of the diagonal so np.trace(Sw) measures the total within-class spread across all features
+    # np.eye(d) give an identity matrix of dxd where d is the number of features
+    # Whiten Sw (make within-class spread equal in every direction)
+    vals, vecs = np.linalg.eigh(Sw)
+    whiten = vecs / np.sqrt(vals)
+    # eigenvectors identify the directions of within-class spread, and dividing by the square root of their 
+    # eigenvalues scales those directions so their within-class scatter becomes equal.
+    # then find which directions separate the different classes the most
+    vals2, vecs2 = np.linalg.eigh(whiten.T @ Sb @ whiten)
+    order = np.argsort(vals2)[::-1] # directions with the strongest class separation come first
+    return overall_mean, whiten @ vecs2[:, order] # return overall_mean and final LDA transformation matrix
+    # final LDA transformation matrix combines whitening and class-separating directions to transform the original features into new, more discriminative features
+
+def apply_lda(X, lda, dims):
+    mean, W = lda
+    # take original data and center it using the mean learned during training
+    # multiply it by the first dims columns of W (remember that W's column are ordered by best class separation first) to produce new features that LDA considers useful for distinguishing classes.
+    return (X.astype(np.float64) - mean) @ W[:, :dims] 
+
+# Experiment settings
+RUN_SWEEPS = False  
+# True: redo every experiment and rewrite results/knn-results.csv
+# False: skip them and only run the final model
+
+K_SWEEP = {"image": [1, 3, 5, 10, 20], "sentiment": [1, 3, 5, 10, 20, 50, 100, 200]}
+POWER_KS = {"image": [5, 10, 20], "sentiment": [20, 50, 100]}
+POWERS = [0, 1, 4, 16, 64]
+COSINE_RUNS = [(50, 0), (50, 4), (100, 0), (100, 4)] # (k, power), sentiment only
+
+KNN_RESULTS_FILE = os.path.join(RESULTS_DIR, "knn-results.csv")
+
+# LDA experiment grid. An LDA projection keeps at most (number of classes - 1) dimensions.
+LDA_DIMS = {"image": [10, 25, 49], "sentiment": [1, 2]}
+LDA_SHRINKS = [0.1, 0.3, 1.0, 3.0, 10.0]
+LDA_KS = {"image": [1, 5, 10, 20, 50], "sentiment": [5, 20, 50, 100, 200, 400]}
+
+# Best settings found on the validation set: (k, power)
+FINAL = {"image": (20, 64), "sentiment": (200, 0)}
+# Tasks where LDA is applied before k-NN: (dims, shrink). Image is left out because LDA hurt it (see group "lda").
+FINAL_LDA = {"sentiment": (2, 0.1)}
 
 if __name__ == "__main__":
     set_seed()
     os.makedirs(RESULTS_DIR, exist_ok=True)
 
-    # Part 1: experiments
+    # experiments
     if RUN_SWEEPS:
         clear_knn_results()
 
-        # 1a. k sweep, raw vs standardized features (unweighted voting)
+        # k sweep, raw vs standardized features (unweighted voting)
         print("\n--- k sweep: raw vs standardized ---")
         for std in (False, True):
             for task in TASKS:
@@ -137,7 +187,7 @@ if __name__ == "__main__":
                     run_one(task, (X_tr, y_tr, X_val, y_val), k, 0.0, "euclidean", std, with_power=False,
                             group="k sweep, " + ("standardized" if std else "raw"))
 
-        # 1b. weighted voting: power sweep on raw features
+        # weighted voting: power sweep on raw features
         print("\n--- power sweep ---")
         for task in TASKS:
             X_tr, y_tr, X_val, y_val, _, _ = get_task_data(task)
@@ -146,25 +196,48 @@ if __name__ == "__main__":
                     run_one(task, (X_tr, y_tr, X_val, y_val), k, p, "euclidean", False, with_power=True,
                             group="power sweep")
 
-        # 1c. cosine distance on sentiment (on images it equals Euclidean: rows already have length 1)
+        # cosine distance on sentiment (on images it equals Euclidean: rows already have length 1)
         print("\n--- cosine (sentiment) ---")
         X_tr, y_tr, X_val, y_val, _, _ = get_task_data("sentiment")
         for k, p in COSINE_RUNS:
             run_one("sentiment", (X_tr, y_tr, X_val, y_val), k, p, "cosine", False, with_power=True,
                     group="cosine")
 
+        # LDA before k-NN, on both tasks (the projection is learned on the train split only)
+        print("\n--- LDA + k-NN ---")
+        for task in TASKS:
+            X_tr, y_tr, X_val, y_val, _, _ = get_task_data(task)
+            for dims in LDA_DIMS[task]:
+                for shrink in LDA_SHRINKS:
+                    for k in LDA_KS[task]:
+                        for p in POWERS:
+                            run_one(task, (X_tr, y_tr, X_val, y_val), k, p, "euclidean", False,
+                                    with_power=True, group="lda", lda=(dims, shrink))
+
         mark_best()
 
-    # Part 2: final model, error analysis
+        # Summary: best LDA row vs best non-LDA row, per task
+        table = pd.read_csv(KNN_RESULTS_FILE)
+        print("\n--- LDA vs no LDA (best validation accuracy per task) ---")
+        for task in TASKS:
+            rows = table[table["task"] == task]
+            is_lda = rows["notes"].str.startswith("lda")
+            print(f"{task:<10} without LDA {rows[~is_lda]['val_acc'].max():.4f} | with LDA {rows[is_lda]['val_acc'].max():.4f}")
+
+    # final model, error analysis
     for task, (k, p) in FINAL.items():
         X_tr, y_tr, X_val, y_val, X_test, test_ids = get_task_data(task)
+        if task in FINAL_LDA:
+            dims, shrink = FINAL_LDA[task]
+            fitted = fit_lda(X_tr, y_tr, NUM_CLASSES[task], shrink) # learned on the train split only
+            X_tr, X_val = apply_lda(X_tr, fitted, dims), apply_lda(X_val, fitted, dims)
 
         model = KNN(k=k, power=p)
         model.fit(X_tr, y_tr)
         preds = model.predict(X_val)
         print("\n==", task, "| k =", k, "| power =", p, "| val accuracy:", round(accuracy(y_val, preds), 4))
 
-        # Validation predictions, in validation order, so teammates can compare mistakes
+        # validation predictions, in validation order, so teammates can compare mistakes
         out = os.path.join(RESULTS_DIR, f"val_preds_knn_{task}.csv")
         np.savetxt(out, preds, fmt="%d", header="pred", comments="")
 
@@ -192,12 +265,16 @@ if __name__ == "__main__":
                 t, q = divmod(int(idx), n)
                 print(f"   {t} -> {q} : {mistakes[t, q]}")
 
-    # Part 3: retrain on ALL labeled data, predict the test set
+    # retrain on all labeled data, predict the test set
     print()
     test_preds = {}
     test_ids_by_task = {}
     for task, (k, p) in FINAL.items():
         X_all, y_all, X_test, test_ids = load_task(task) # every labeled row, no split
+        if task in FINAL_LDA:
+            dims, shrink = FINAL_LDA[task]
+            fitted = fit_lda(X_all, y_all, NUM_CLASSES[task], shrink)  # labeled data only, never the test set
+            X_all, X_test = apply_lda(X_all, fitted, dims), apply_lda(X_test, fitted, dims)
         model = KNN(k=k, power=p)
         model.fit(X_all, y_all)
         test_preds[task] = model.predict(X_test)
@@ -210,4 +287,4 @@ if __name__ == "__main__":
 
     build_submission(test_ids_by_task["image"], test_preds["image"],
                     test_ids_by_task["sentiment"], test_preds["sentiment"],
-                    out_name="sub_knn_v1.csv")
+                    out_name="sub_knn_v2.csv")
