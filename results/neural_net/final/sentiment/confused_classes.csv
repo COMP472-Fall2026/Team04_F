@@ -1,0 +1,7 @@
+true_class,predicted_class,count
+1,2,216
+1,0,163
+2,1,129
+0,1,119
+2,0,74
+0,2,66

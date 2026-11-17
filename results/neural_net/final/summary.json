@@ -1,0 +1,44 @@
+{
+  "purpose": "Selected individual neural networks; validation scores precede full-data refitting.",
+  "models": [
+    {
+      "task": "image",
+      "experiment": "wide_batch_norm",
+      "best_epoch": 13,
+      "epochs_run": 25,
+      "train_acc": 0.998875,
+      "val_acc": 0.3665,
+      "val_loss": 3.0958763427734377,
+      "generalization_gap": 0.6323749999999999,
+      "train_time_s": 11.360506290977355,
+      "predict_time_s": 0.009684084041509777,
+      "train_samples": 16000,
+      "val_samples": 4000,
+      "hyperparameters": "{\"activation\": \"relu\", \"batch_norm\": true, \"batch_size\": 128, \"dropout\": 0.2, \"epochs\": 80, \"hidden\": [512, 256], \"learning_rate\": 0.001, \"optimizer\": \"adam\", \"patience\": 12, \"standardize\": true, \"weight_decay\": 0.0001}",
+      "source_study": "optimization_experiments"
+    },
+    {
+      "task": "sentiment",
+      "experiment": "unscaled_small",
+      "best_epoch": 9,
+      "epochs_run": 21,
+      "train_acc": 0.7151041666666667,
+      "val_acc": 0.6804166666666667,
+      "val_loss": 0.7377585728963216,
+      "generalization_gap": 0.03468749999999998,
+      "train_time_s": 1.5846442090114579,
+      "predict_time_s": 0.0010664159781299531,
+      "train_samples": 9600,
+      "val_samples": 2400,
+      "hyperparameters": "{\"activation\": \"relu\", \"batch_size\": 128, \"dropout\": 0.2, \"epochs\": 80, \"hidden\": [64], \"learning_rate\": 0.001, \"optimizer\": \"adam\", \"patience\": 12, \"standardize\": false, \"weight_decay\": 0.0001}",
+      "source_study": "regularization_experiments"
+    }
+  ],
+  "mean_validation_accuracy": 0.5234583333333334,
+  "local_kaggle_file": "submissions/neural_net_optimization_best.csv",
+  "notes": [
+    "This CSV contains image NN and sentiment NN predictions, not a KNN/NN hybrid.",
+    "Full training and test predictions remain local and can be regenerated.",
+    "All experiment aggregates, including unsuccessful trials, remain in results/results.csv."
+  ]
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "source": "results/neural_net/optimization_experiments/image/best.json",
+    "destination": "image/best.json",
+    "sha256": "5e3297cd3defd6c13f003cbc608d027b898bf04149eb145c2768298cbd631e9c"
+  },
+  {
+    "source": "results/neural_net/optimization_experiments/image/wide_batch_norm/history.csv",
+    "destination": "image/history.csv",
+    "sha256": "78583edf56c33511ba60403bec73d7ff2862177119afa120a4aacd4a3c34f644"
+  },
+  {
+    "source": "results/neural_net/optimization_experiments/image/wide_batch_norm/learning_curves.png",
+    "destination": "image/learning_curves.png",
+    "sha256": "a34ae23535ef5e0486788b997c3ca391444f60810eeb1f2f88cf9fd320f0d077"
+  },
+  {
+    "source": "results/neural_net/optimization_experiments/image/class_report.csv",
+    "destination": "image/class_report.csv",
+    "sha256": "a3174142823bac13f24ae3ab565257442e7dd339c9662a4618ae07628b20f055"
+  },
+  {
+    "source": "results/neural_net/optimization_experiments/image/confusion_matrix.csv",
+    "destination": "image/confusion_matrix.csv",
+    "sha256": "76b36fcba7f338393bce2c74a740ab8d332c6c87f64447a865f0f8f380e037a9"
+  },
+  {
+    "source": "results/neural_net/optimization_experiments/image/confusion_matrix.png",
+    "destination": "image/confusion_matrix.png",
+    "sha256": "0996463e122e19a41a4d9c63ea618ca2e13148005365570d0045b96fe17c59d0"
+  },
+  {
+    "source": "results/neural_net/optimization_experiments/image/confused_classes.csv",
+    "destination": "image/confused_classes.csv",
+    "sha256": "f80f9c3f4c07ffd381142a043d81973918435629f2aaaa7535577833b5987705"
+  },
+  {
+    "source": "results/neural_net/optimization_experiments/image/analysis.json",
+    "destination": "image/analysis.json",
+    "sha256": "efa06f5a9c3ab17df0e1c2dd8dc1fc15c41a6332bd9dce18bcc9807a2ef8a301"
+  },
+  {
+    "source": "results/neural_net/optimization_experiments/image/final_training.json",
+    "destination": "image/final_training.json",
+    "sha256": "73f8b05563f6a245bc89b5dd4a53cd632f7ad1b5b9c9ee7d32e0b360cfd656e7"
+  },
+  {
+    "source": "results/neural_net/regularization_experiments/sentiment/best.json",
+    "destination": "sentiment/best.json",
+    "sha256": "1569088de246f0b4301a9b2b27175b224f287262a03cb03460747fadde9733d5"
+  },
+  {
+    "source": "results/neural_net/regularization_experiments/sentiment/unscaled_small/history.csv",
+    "destination": "sentiment/history.csv",
+    "sha256": "8b2593a4fa1f4e58078f201b2e0bf9285c2793b4058dc85ea7d758508ede4186"
+  },
+  {
+    "source": "results/neural_net/regularization_experiments/sentiment/unscaled_small/learning_curves.png",
+    "destination": "sentiment/learning_curves.png",
+    "sha256": "aec4d6044faf5b0f0772c09b496f4525f04229922f236889fbc283ca24069018"
+  },
+  {
+    "source": "results/neural_net/regularization_experiments/sentiment/class_report.csv",
+    "destination": "sentiment/class_report.csv",
+    "sha256": "a24e6d81d5aaf42885c2b461d912e9f55bcd3436f9eabd3a24000f1121a11fb7"
+  },
+  {
+    "source": "results/neural_net/regularization_experiments/sentiment/confusion_matrix.csv",
+    "destination": "sentiment/confusion_matrix.csv",
+    "sha256": "8652fa913c0089154966a8dc7c1dfb4b0181e3a43b2ffcbfc1a325d2751f2f48"
+  },
+  {
+    "source": "results/neural_net/regularization_experiments/sentiment/confusion_matrix.png",
+    "destination": "sentiment/confusion_matrix.png",
+    "sha256": "14796ef479740e9069b25d1c1b04b6126940d282d078020bf62d81560249847b"
+  },
+  {
+    "source": "results/neural_net/regularization_experiments/sentiment/confused_classes.csv",
+    "destination": "sentiment/confused_classes.csv",
+    "sha256": "eacead1dde5c4aaf518c2979ef802eea8b3c263cf1bfdbe259e811a41f422911"
+  },
+  {
+    "source": "results/neural_net/regularization_experiments/sentiment/analysis.json",
+    "destination": "sentiment/analysis.json",
+    "sha256": "7c84632c294227f915c7568fb40a0ac2b3aa756e7e5eec958176e5473df28cb6"
+  },
+  {
+    "source": "results/neural_net/regularization_experiments/sentiment/final_training.json",
+    "destination": "sentiment/final_training.json",
+    "sha256": "bb94ace307875c63988f06601765bf1a69b4ffdeb76547161e0785dc9eb42c7d"
+  },
+  {
+    "source": "results/neural_net/ensemble_probe/validation_summary.json",
+    "destination": "ensemble_probe.json",
+    "sha256": "ded30aa428598f42ef9b9b688fe4555b2a1267352b58a9da66312fe77ff09d85"
+  },
+  {
+    "source": "results/neural_net/moderate_regularization/regularization_tradeoff.png",
+    "destination": "regularization_tradeoff.png",
+    "sha256": "6bc5ec8ff3e700d17f8b8e7304923db00234d1c129b76e735cb1fb769b93d289"
+  }
+]

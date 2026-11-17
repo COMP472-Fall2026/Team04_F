@@ -44,6 +44,69 @@ and refit to produce a Kaggle-format CSV locally:
 .venv/bin/python neural_net.py --sweep --finalize
 ```
 
+Run a separate follow-up study targeting overfitting, with a larger epoch budget:
+
+```bash
+.venv/bin/python neural_net.py --regularization-sweep --epochs 80 --patience 12 \
+    --finalize --output-dir results/neural_net/regularization_experiments
+```
+
+The ten configurations compare the reference network with one-layer networks of
+64 and 32 neurons, weight decay of 0.01 and 0.1, dropout of 0.5, and combinations
+of smaller networks, regularization, and unstandardized inputs. Some combined
+configurations change several factors; use the individual-factor comparisons
+when explaining their effects. `--sweep` and `--regularization-sweep` are mutually
+exclusive. Compare any winner with the initial study before choosing a submission;
+a new experiment does not automatically replace an earlier, better model.
+
+An additional image-focused study compares moderate parameter changes, SGD with
+momentum, and optional hidden-layer batch normalization:
+
+```bash
+.venv/bin/python neural_net.py --task image --optimization-sweep --dropout 0 \
+    --epochs 80 --patience 12 --finalize \
+    --output-dir results/neural_net/optimization_experiments
+```
+
+Its reference is the initial winning image configuration: hidden layers 256 and
+64, ReLU, Adam at 0.001, weight decay 0.0001, standardized inputs, and no dropout.
+The eight candidates are the reference; weight decay 0.001; learning rate 0.0003;
+dropout 0.1; SGD at learning rate 0.05 with momentum 0.9; batch normalization;
+batch normalization on raw features; and batch normalization with hidden layers
+512 and 256 and dropout 0.2. Some candidates change several settings, so their
+results measure a configuration rather than isolate one setting's effect.
+The sweep flags are mutually exclusive.
+
+`--batch-norm` enables `Linear -> BatchNorm1d -> activation -> optional dropout`
+in each hidden layer. This remains a feed-forward network. Input standardization
+uses training-set statistics once; batch normalization instead tracks hidden
+activation statistics during training and uses saved running statistics for
+validation and prediction. If the last training minibatch contains one example,
+that minibatch uses running statistics for batch normalization rather than
+discarding the example. The other network parameters still receive gradients.
+Batch normalization is an optional experiment, not a guaranteed overfitting fix.
+Existing checkpoints without this setting load with batch normalization disabled.
+
+To tune regularization on the wider image architecture while keeping its other
+settings fixed:
+
+```bash
+.venv/bin/python neural_net.py --task image --hidden 512 256 --batch-norm \
+    --dropout 0.2 --weight-decay 0.0001 --moderate-sweep --epochs 80 --patience 8 \
+    --output-dir results/neural_net/moderate_regularization
+```
+
+This compares the reference with a grid of dropout 0.2/0.3/0.4 and weight decay
+0.0003/0.001/0.003. Learning rate, architecture, batch size, and preprocessing
+are fixed. Use a new output directory name for each repeated run.
+
+Early stopping can monitor either validation accuracy (the default) or validation
+cross-entropy loss. For example, add `--early-stopping-metric loss --patience 3`
+to restore the checkpoint with the lowest validation loss and stop after three
+successive epochs without improvement. A loss-selected checkpoint can occur
+earlier and have a smaller train/validation gap while obtaining lower accuracy.
+Compare both accuracy and loss rather than treating a smaller gap as sufficient.
+
 Run a particular configuration on sentiment only:
 
 ```bash
@@ -78,11 +141,16 @@ Softmax is used only to report prediction confidence during evaluation.
 Labels are integer class indices. The optimizer is Adam with learning rate
 0.001 and weight decay 0.0001, using minibatches of 128 and up to 40 epochs.
 
-Validation is performed after each epoch with dropout disabled. The best epoch
-has the highest validation accuracy, with lower validation cross-entropy used
-to break ties. Training stops after eight successive epochs without improvement.
+Validation is performed after each epoch with dropout disabled. By default, the
+best epoch has the highest validation accuracy, with lower validation
+cross-entropy used to break ties. With `--early-stopping-metric loss`, the best
+epoch instead has the lowest validation loss, with higher accuracy breaking ties.
+Training stops after eight successive epochs without improvement by default;
+`--patience` changes this limit.
 The best weights are restored before reporting accuracy or saving a checkpoint.
 Training and validation loss curves are both measured in evaluation mode.
+Across experiments, configurations are still ranked by validation accuracy,
+then validation loss, regardless of the checkpoint criterion used within a run.
 
 The default sweep changes one factor relative to this baseline:
 
@@ -109,6 +177,13 @@ the summary describe the earlier models trained on the 80% training split;
 they are not measured scores for the final refitted models.
 
 ## Saved outputs
+
+The compact Git submission package is in
+[results/neural_net/final/](results/neural_net/final/README.md). It contains the
+selected models' supporting evidence and exact reproduction commands. The
+aggregate `results/results.csv` retains all trial results. Other generated
+neural-network run folders remain local and are ignored by Git; rerunning
+experiments does not automatically replace the curated package.
 
 Each invocation creates a new directory under `results/neural_net/`. An explicit
 `--output-dir` must name a new directory, so earlier runs are not overwritten.
@@ -159,6 +234,9 @@ The neural network tests check both output dimensions, learning on separable
 synthetic data, seed reproducibility, preprocessing leakage, partial minibatch
 loss weighting, early stopping and best-weight restoration, checkpoint/scaler
 reloads, class metrics, and the experiment/refit pipeline with preserved IDs.
+They also check batch-normalization statistics, a singleton final minibatch,
+saved-model inference with batch normalization enabled, and loss-based early
+stopping when accuracy and loss favor different epochs.
 Synthetic samples are used only in tests, never as competition training data.
 
 ## Presentation and assistance
@@ -183,3 +261,5 @@ Technical references:
 - [PyTorch CrossEntropyLoss](https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html)
 - [PyTorch saving and loading models](https://docs.pytorch.org/tutorials/beginner/saving_loading_models.html)
 - [PyTorch reproducibility notes](https://docs.pytorch.org/docs/stable/notes/randomness.html)
+- [PyTorch BatchNorm1d](https://docs.pytorch.org/docs/stable/generated/torch.nn.BatchNorm1d.html)
+- [PyTorch SGD](https://docs.pytorch.org/docs/stable/generated/torch.optim.SGD.html)

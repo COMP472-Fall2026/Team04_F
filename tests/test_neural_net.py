@@ -93,6 +93,31 @@ class NeuralNetworkTests(unittest.TestCase):
         self.assertAlmostEqual(actual["loss"], expected, places=6)
         self.assertEqual(actual["accuracy"], 0.8)
 
+    def test_loss_stopping_restores_earlier_weights_despite_rising_accuracy(self):
+        epoch = 0
+
+        def train_epoch(model, *args):
+            nonlocal epoch
+            epoch += 1
+            with torch.no_grad():
+                for parameter in model.parameters():
+                    parameter.fill_(epoch)
+
+        losses = [0.5, 0.4, 0.6, 0.7]
+
+        def evaluate(*args, **kwargs):
+            return {"accuracy": 0.5 + epoch / 10, "loss": losses[epoch - 1]}
+
+        X, y = np.ones((6, 2), np.float32), np.zeros(6, np.int64)
+        config = net.Config(hidden=(4,), epochs=10, patience=2, early_stopping_metric="loss")
+        with patch.object(net, "train_epoch", side_effect=train_epoch), patch.object(net, "evaluate", side_effect=evaluate):
+            model, history, best_epoch, _ = net.train_model(X, y, X, y, 3, config, verbose=False)
+        self.assertEqual(best_epoch, 2)
+        self.assertEqual(len(history), 4)
+        self.assertGreater(history[-1]["val_acc"], history[best_epoch - 1]["val_acc"])
+        for parameter in model.parameters():
+            self.assertTrue(torch.all(parameter == 2))
+
     def test_checkpoint_restores_preprocessing_and_eval_mode(self):
         raw = np.array([[1, 5], [2, 7], [3, 9]], np.float32)
         (scaled,), scaler = net.prepare_features(raw)
@@ -113,6 +138,30 @@ class NeuralNetworkTests(unittest.TestCase):
         self.assertEqual(report.name.tolist(), ["Negative", "Neutral", "Positive"])
         self.assertEqual(report.loc[1, "precision"], 0)
         self.assertTrue(np.isfinite(report[["precision", "recall", "f1"]]).all().all())
+
+    def test_batch_norm_training_singleton_batch_and_saved_inference(self):
+        common.set_seed(42)
+        raw = np.random.default_rng(8).normal(size=(5, 3)).astype(np.float32)
+        (X,), scaler = net.prepare_features(raw)
+        y = np.array([0, 1, 2, 0, 1])
+        config = net.Config(hidden=(8,), batch_norm=True, batch_size=2, dropout=0)
+        model = net.NeuralNetwork(3, 3, config)
+        original_weights = model.layers[0].weight.detach().clone()
+        net.train_epoch(model, net.make_loader(X, y, config, 42), net.make_optimizer(model, config), "cpu")
+        self.assertFalse(torch.equal(original_weights, model.layers[0].weight))
+        layer = next(item for item in model.modules() if isinstance(item, torch.nn.BatchNorm1d))
+        self.assertEqual(layer.num_batches_tracked.item(), 2)
+        self.assertTrue(layer.training)
+        running_mean = layer.running_mean.clone()
+        expected = net.evaluate(model, X)["predictions"]
+        torch.testing.assert_close(layer.running_mean, running_mean)
+        with TemporaryDirectory() as tmp:
+            path = Path(tmp) / "normalized_model.pt"
+            net.save_checkpoint(path, model, "sentiment", config, scaler, 1, 42, "train_split")
+            np.testing.assert_array_equal(net.predict_checkpoint(path, raw), expected)
+            restored, checkpoint = net.load_checkpoint(path)
+            self.assertTrue(checkpoint["config"]["batch_norm"])
+            self.assertFalse(restored.training)
 
     def test_pipeline_preserves_ids_logs_results_and_refits_all_rows(self):
         rng = np.random.default_rng(9)
@@ -156,7 +205,8 @@ class NeuralNetworkTests(unittest.TestCase):
 
     def test_bad_hyperparameters_are_rejected(self):
         for kwargs in ({"hidden": ()}, {"epochs": 0}, {"dropout": 1}, {"learning_rate": -1},
-                       {"weight_decay": -1}, {"activation": "unknown"}, {"optimizer": "unknown"}):
+                       {"weight_decay": -1}, {"activation": "unknown"}, {"optimizer": "unknown"},
+                       {"batch_norm": True, "batch_size": 1}, {"early_stopping_metric": "unknown"}):
             with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
                 net.Config(**kwargs)
 

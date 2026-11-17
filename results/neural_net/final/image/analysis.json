@@ -1,0 +1,6 @@
+{
+  "macro_f1": 0.3617362563601611,
+  "validation_errors": 2534,
+  "selected_experiment": "wide_batch_norm",
+  "generalization_gap": 0.6323749999999999
+}

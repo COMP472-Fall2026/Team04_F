@@ -1,0 +1,8 @@
+{
+  "epochs": 9,
+  "training_samples": 12000,
+  "test_samples": 5000,
+  "train_time_s": 0.8337157089845277,
+  "predict_time_s": 0.003076624998357147,
+  "note": "Validation selected the configuration and epoch count; test labels were never used."
+}

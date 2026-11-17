@@ -1,0 +1,69 @@
+{
+  "experiment": "Exploratory probability averaging of existing validation checkpoints",
+  "split_seed": 42,
+  "validation_fraction": 0.2,
+  "scope": "Validation only; ensemble members would need final refitting before an ensemble submission.",
+  "limitation": "These are the same validation examples already used for individual model selection, not an independent evaluation.",
+  "image": {
+    "validation_samples": 4000,
+    "members": [
+      "results/neural_net/optimization_experiments/image/wide_batch_norm/validation_model.pt",
+      "results/neural_net/optimization_experiments/image/moderate_decay/validation_model.pt",
+      "results/neural_net/optimization_experiments/image/intermediate_lr/validation_model.pt"
+    ],
+    "individual_accuracies": [
+      0.3665,
+      0.33775,
+      0.334
+    ],
+    "equal_average": {
+      "weights": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "val_acc": 0.3785,
+      "val_loss": 2.721019096700093
+    },
+    "weighted_average": {
+      "weights": [
+        0.5,
+        0.25,
+        0.25
+      ],
+      "val_acc": 0.38625,
+      "val_loss": 2.699205790898922
+    }
+  },
+  "sentiment": {
+    "validation_samples": 2400,
+    "members": [
+      "results/neural_net/regularization_experiments/sentiment/unscaled_small/validation_model.pt",
+      "results/neural_net/initial_experiments/sentiment/scaling_comparison/validation_model.pt",
+      "results/neural_net/regularization_experiments/sentiment/small_regularized/validation_model.pt"
+    ],
+    "individual_accuracies": [
+      0.6804166666666667,
+      0.6758333333333333,
+      0.6758333333333333
+    ],
+    "equal_average": {
+      "weights": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "val_acc": 0.6770833333333334,
+      "val_loss": 0.7269784452709249
+    },
+    "weighted_average": {
+      "weights": [
+        0.5,
+        0.25,
+        0.25
+      ],
+      "val_acc": 0.6766666666666666,
+      "val_loss": 0.7281082666531754
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "macro_f1": 0.6762895577871296,
+  "validation_errors": 767,
+  "selected_experiment": "unscaled_small",
+  "generalization_gap": 0.03468749999999998
+}

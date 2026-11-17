@@ -1,0 +1,38 @@
+{
+  "created_utc": "2026-11-11T20:41:33.287801+00:00",
+  "python": "3.11.7",
+  "libraries": {
+    "numpy": "2.4.6",
+    "pandas": "3.1.1",
+    "torch": "2.15.0",
+    "matplotlib": "3.11.2"
+  },
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "device": "cpu",
+  "threads": 2,
+  "model_seed": 42,
+  "split_seed": 42,
+  "validation_fraction": 0.2,
+  "data_sha256": {
+    "image_train.csv": "41e0ef407a3825200f967a2fbfb629a88c50cd40714c9e654dee0c1d8e1c614d",
+    "image_test.csv": "4132d9813c0a746d73d160646c2174242ef64949ae4f260d6717245da7a1e88c"
+  },
+  "selected_configuration": {
+    "activation": "relu",
+    "batch_norm": true,
+    "batch_size": 128,
+    "dropout": 0.2,
+    "epochs": 80,
+    "hidden": [
+      512,
+      256
+    ],
+    "learning_rate": 0.001,
+    "optimizer": "adam",
+    "patience": 12,
+    "standardize": true,
+    "weight_decay": 0.0001
+  },
+  "checkpoint_selection": "Highest validation accuracy, then lowest validation loss.",
+  "source_environment": "results/neural_net/optimization_experiments/environment.json"
+}

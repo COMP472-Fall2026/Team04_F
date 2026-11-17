@@ -44,6 +44,8 @@ class Config:
     weight_decay: float = 0.0001
     dropout: float = 0.2
     standardize: bool = True
+    batch_norm: bool = False
+    early_stopping_metric: str = "accuracy"
 
     def __post_init__(self):
         if not self.hidden or any(width <= 0 for width in self.hidden):
@@ -60,6 +62,10 @@ class Config:
             raise ValueError("weight decay must be finite and nonnegative")
         if not 0 <= self.dropout < 1:
             raise ValueError("dropout must be in [0, 1)")
+        if self.batch_norm and self.batch_size < 2:
+            raise ValueError("batch normalization requires a batch size of at least 2")
+        if self.early_stopping_metric not in ("accuracy", "loss"):
+            raise ValueError("early stopping metric must be accuracy or loss")
 
 
 class NeuralNetwork(nn.Module):
@@ -71,7 +77,10 @@ class NeuralNetwork(nn.Module):
         layers = []
         previous = input_dim
         for width in config.hidden:
-            layers.extend((nn.Linear(previous, width), activations[config.activation]()))
+            layers.append(nn.Linear(previous, width))
+            if config.batch_norm:
+                layers.append(nn.BatchNorm1d(width))
+            layers.append(activations[config.activation]())
             if config.dropout:
                 layers.append(nn.Dropout(config.dropout))
             previous = width
@@ -131,12 +140,21 @@ def train_epoch(model, loader, optimizer, device):
     loss_fn = nn.CrossEntropyLoss()
     for features, labels in loader:
         features, labels = features.to(device), labels.to(device)
+        # A final minibatch can have one row. Use running statistics for that
+        # row so BatchNorm can still train its affine parameters without
+        # discarding a training example or estimating variance from one value.
+        singleton_layers = [layer for layer in model.modules()
+                            if len(features) == 1 and isinstance(layer, nn.BatchNorm1d) and layer.training]
+        for layer in singleton_layers:
+            layer.eval()
         optimizer.zero_grad(set_to_none=True)
         loss = loss_fn(model(features), labels)
         if not torch.isfinite(loss):
             raise RuntimeError("Nonfinite training loss; check features and learning rate.")
         loss.backward()
         optimizer.step()
+        for layer in singleton_layers:
+            layer.train()
 
 
 @torch.inference_mode()
@@ -167,7 +185,7 @@ def evaluate(model, X, y=None, batch_size=512, device="cpu"):
 
 def train_model(X_train, y_train, X_val, y_val, num_classes, config, seed=common.SEED,
                 device="cpu", verbose=True):
-    """Select the best epoch by validation accuracy, breaking ties by loss."""
+    """Restore the best validation checkpoint using the configured stopping metric."""
     if len(X_train) == 0 or len(X_val) == 0:
         raise ValueError("Training and validation splits must both be nonempty.")
     common.set_seed(seed)
@@ -186,7 +204,10 @@ def train_model(X_train, y_train, X_val, y_val, num_classes, config, seed=common
             "val_loss": val_metrics["loss"], "train_acc": train_metrics["accuracy"],
             "val_acc": val_metrics["accuracy"],
         })
-        score = (val_metrics["accuracy"], -val_metrics["loss"])
+        if config.early_stopping_metric == "loss":
+            score = (-val_metrics["loss"], val_metrics["accuracy"])
+        else:
+            score = (val_metrics["accuracy"], -val_metrics["loss"])
         if score > best_score:
             best_score, best_epoch, stale = score, epoch, 0
             # Clone: state_dict() alone would keep references to changing weights.
@@ -242,6 +263,51 @@ def experiment_configs(base):
         "dropout_comparison": replace(base, dropout=0.0 if base.dropout else 0.2),
         "scaling_comparison": replace(base, standardize=not base.standardize),
     }
+
+
+def regularization_configs(base):
+    """Follow-up study of capacity and regularization after the initial sweep.
+
+    The first variants isolate individual factors; the final variants combine
+    smaller hidden layers and stronger weight decay. Selection still uses only
+    the shared validation split, never the public Kaggle score.
+    """
+    return {
+        "reference": base,
+        "hidden_64": replace(base, hidden=(64,)),
+        "hidden_32": replace(base, hidden=(32,)),
+        "weight_decay_001": replace(base, weight_decay=0.01),
+        "weight_decay_01": replace(base, weight_decay=0.1),
+        "dropout_05": replace(base, dropout=0.5),
+        "small_regularized": replace(base, hidden=(64,), weight_decay=0.01, dropout=0.3),
+        "small_strong_decay": replace(base, hidden=(32,), weight_decay=0.1),
+        "unscaled_small": replace(base, hidden=(64,), standardize=False),
+        "unscaled_regularized": replace(base, hidden=(64,), weight_decay=0.01, standardize=False),
+    }
+
+
+def optimization_configs(base):
+    """Compare moderate settings and alternatives to the initial Adam MLP."""
+    return {
+        "reference": base,
+        "moderate_decay": replace(base, weight_decay=0.001),
+        "intermediate_lr": replace(base, learning_rate=0.0003),
+        "light_dropout": replace(base, dropout=0.1),
+        "sgd_momentum": replace(base, optimizer="sgd", learning_rate=0.05),
+        "batch_norm": replace(base, batch_norm=True),
+        "batch_norm_raw": replace(base, batch_norm=True, standardize=False),
+        "wide_batch_norm": replace(base, batch_norm=True, hidden=(512, 256), dropout=0.2),
+    }
+
+
+def moderate_regularization_configs(base):
+    """Hold architecture fixed while comparing a modest dropout/decay grid."""
+    configs = {"reference": base}
+    for dropout in (0.2, 0.3, 0.4):
+        for decay in (0.0003, 0.001, 0.003):
+            name = f"dropout_{int(dropout * 100)}_decay_{decay:g}"
+            configs[name] = replace(base, dropout=dropout, weight_decay=decay)
+    return configs
 
 
 def write_json(path, data):
@@ -356,6 +422,7 @@ def run_task(task, configs, directory, seed, device, finalize=False, plots=True)
         predict_time = time.perf_counter() - start
         row = {
             "task": task, "experiment": name, "best_epoch": best_epoch,
+            "early_stopping_metric": config.early_stopping_metric,
             "epochs_run": len(history), "train_acc": train_metrics["accuracy"],
             "val_acc": val_metrics["accuracy"], "val_loss": val_metrics["loss"],
             "generalization_gap": train_metrics["accuracy"] - val_metrics["accuracy"],
@@ -411,7 +478,14 @@ def run_task(task, configs, directory, seed, device, finalize=False, plots=True)
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--task", choices=["both", *common.TASKS], default="both")
-    parser.add_argument("--sweep", action="store_true", help="Run six controlled hyperparameter experiments per task.")
+    study = parser.add_mutually_exclusive_group()
+    study.add_argument("--sweep", action="store_true", help="Run six controlled hyperparameter experiments per task.")
+    study.add_argument("--regularization-sweep", action="store_true",
+                       help="Run ten follow-up experiments on network size, weight decay, dropout, and scaling.")
+    study.add_argument("--optimization-sweep", action="store_true",
+                       help="Compare eight settings including SGD and batch normalization.")
+    study.add_argument("--moderate-sweep", action="store_true",
+                       help="Compare the reference with nine moderate dropout/weight-decay settings.")
     parser.add_argument("--finalize", action="store_true", help="Refit winners on all labeled data and save test predictions.")
     parser.add_argument("--hidden", type=int, nargs="+", default=[256, 64])
     parser.add_argument("--activation", choices=["relu", "tanh", "gelu"], default="relu")
@@ -420,8 +494,11 @@ def parse_args(argv=None):
     parser.add_argument("--batch-size", type=int, default=128)
     parser.add_argument("--epochs", type=int, default=40)
     parser.add_argument("--patience", type=int, default=8)
+    parser.add_argument("--early-stopping-metric", choices=["accuracy", "loss"], default="accuracy",
+                        help="Choose and restore checkpoints by validation accuracy or validation loss.")
     parser.add_argument("--weight-decay", type=float, default=0.0001)
     parser.add_argument("--dropout", type=float, default=0.2)
+    parser.add_argument("--batch-norm", action="store_true", help="Normalize hidden activations before activation functions.")
     parser.add_argument("--no-standardize", action="store_true")
     parser.add_argument("--seed", type=int, default=common.SEED, help="Model seed; shared data split remains seed 42.")
     parser.add_argument("--device", choices=["cpu", "auto", "cuda", "mps"], default="cpu")
@@ -434,9 +511,12 @@ def parse_args(argv=None):
 def main(argv=None):
     parser, args = parse_args(argv)
     try:
-        config = Config(tuple(args.hidden), args.activation, args.learning_rate, args.optimizer,
-                        args.batch_size, args.epochs, args.patience, args.weight_decay,
-                        args.dropout, not args.no_standardize)
+        config = Config(hidden=tuple(args.hidden), activation=args.activation,
+                        learning_rate=args.learning_rate, optimizer=args.optimizer,
+                        batch_size=args.batch_size, epochs=args.epochs, patience=args.patience,
+                        weight_decay=args.weight_decay, dropout=args.dropout,
+                        standardize=not args.no_standardize, batch_norm=args.batch_norm,
+                        early_stopping_metric=args.early_stopping_metric)
         if args.threads <= 0 or args.seed < 0 or args.seed >= 2**32:
             raise ValueError("threads must be positive and seed must be in [0, 2**32).")
         device = resolve_device(args.device)
@@ -445,7 +525,14 @@ def main(argv=None):
     torch.set_num_threads(args.threads)
     # CPU defaults keep runs practical and reproducible on ordinary laptops.
     torch.use_deterministic_algorithms(device.type == "cpu")
-    configs = experiment_configs(config) if args.sweep else {"baseline": config}
+    if args.moderate_sweep:
+        configs = moderate_regularization_configs(config)
+    elif args.optimization_sweep:
+        configs = optimization_configs(config)
+    elif args.regularization_sweep:
+        configs = regularization_configs(config)
+    else:
+        configs = experiment_configs(config) if args.sweep else {"baseline": config}
     tasks = common.TASKS if args.task == "both" else [args.task]
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S_%fZ")
     directory = args.output_dir or Path(common.RESULTS_DIR) / "neural_net" / stamp
@@ -456,7 +543,7 @@ def main(argv=None):
         "libraries": {name: version(name) for name in ("numpy", "pandas", "torch", "matplotlib")},
         "platform": platform.platform(), "device": str(device), "threads": args.threads,
         "model_seed": args.seed, "split_seed": common.SEED, "validation_fraction": common.VAL_FRAC,
-        "selection": "highest validation accuracy, then lowest validation cross-entropy loss",
+        "selection": "Configurations are ranked by validation accuracy, then loss; checkpoints use each configuration's early_stopping_metric.",
         "configs": {name: asdict(item) for name, item in configs.items()},
         "data_sha256": {},
     }

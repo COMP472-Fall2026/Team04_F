@@ -1,0 +1,15 @@
+{
+  "task": "sentiment",
+  "experiment": "unscaled_small",
+  "best_epoch": 9,
+  "epochs_run": 21,
+  "train_acc": 0.7151041666666667,
+  "val_acc": 0.6804166666666667,
+  "val_loss": 0.7377585728963216,
+  "generalization_gap": 0.03468749999999998,
+  "train_time_s": 1.5846442090114579,
+  "predict_time_s": 0.0010664159781299531,
+  "train_samples": 9600,
+  "val_samples": 2400,
+  "hyperparameters": "{\"activation\": \"relu\", \"batch_size\": 128, \"dropout\": 0.2, \"epochs\": 80, \"hidden\": [64], \"learning_rate\": 0.001, \"optimizer\": \"adam\", \"patience\": 12, \"standardize\": false, \"weight_decay\": 0.0001}"
+}
