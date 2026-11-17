@@ -15,7 +15,7 @@ class KNN:
         # k-NN has no training step: it just remembers the data.
         self.x_train = x
         self.y_train = y
-        self.b_dot_b = np.sum(x ** 2, axis=1)   # b·b, computed once
+        self.b_dot_b = np.sum(x ** 2, axis=1) # b·b, computed once
 
     def _distances(self, x_chunk):
         # distance² = a·a + b·b - 2(a·b), for every (new point, training point) pair
@@ -44,7 +44,7 @@ class KNN:
             for row, w in zip(nearest_labels, weights):
                 # labels: the different classes in this row
                 # first_pos: where each class first appears (0 = closest neighbour)
-                # inverse: for every neighbour, which entry of `labels` it belongs to
+                # inverse: for every neighbour, which entry of labels it belongs to
                 labels, first_pos, inverse = np.unique(
                     row, return_index=True, return_inverse=True
                 )
@@ -77,17 +77,24 @@ def per_class_metrics(cm):
     """cm: rows = true class, columns = predicted class.
     Returns precision, recall and F1, one value per class."""
     correct = cm.diagonal().astype(np.float64)
-    precision = correct / np.maximum(cm.sum(axis=0), 1) # of the points PREDICTED as c, how many truly are c
-    recall = correct / np.maximum(cm.sum(axis=1), 1) # of the points that truly ARE c, how many we found
+    precision = correct / np.maximum(cm.sum(axis=0), 1) # of the points predicted as c, how many truly are c
+    recall = correct / np.maximum(cm.sum(axis=1), 1) # of the points that truly are c, how many we found
     f1 = 2 * precision * recall / np.maximum(precision + recall, 1e-12)
     return precision, recall, f1
 
-def run_one(task, data, k, power, metric, standardized, with_power, group, lda=None):
+def run_one(task, data, k, power, metric, standardized, with_power, group, lda=None, exponent=None, append=None):
     """Fit on the train split, predict the validation split, log one row. Returns the accuracy.
-    `group` names the experiment (it goes in the notes column)."""
+    group names the experiment (it goes in the notes column)."""
     X_tr, y_tr, X_val, y_val = data
     if metric == "cosine": # cosine = Euclidean on rows of length 1
         X_tr, X_val = l2_normalize(X_tr), l2_normalize(X_val)
+
+    if exponent is not None: # shrink the large feature values, then renormalize each row
+        X_tr, X_val = power_normalize(X_tr, exponent), power_normalize(X_val, exponent)
+
+    if append is not None: # append = (dims, shrink, weight): keep the features, add scaled LDA features
+        dims, shrink, weight = append
+        X_tr, X_val = append_lda(X_tr, y_tr, X_val, NUM_CLASSES[task], dims, shrink, weight)
 
     if lda is not None: # lda = (dims, shrink): learn on the train split only, project both splits
         dims, shrink = lda
@@ -103,6 +110,10 @@ def run_one(task, data, k, power, metric, standardized, with_power, group, lda=N
     settings = {"k": k, "metric": metric, "standardized": standardized}
     if with_power:
         settings["power"] = power
+    if exponent is not None:
+        settings["exponent"] = exponent
+    if append is not None:
+        settings["append_dims"], settings["append_shrink"], settings["append_weight"] = append
     if lda is not None:
         settings["lda_dims"], settings["lda_shrink"] = lda
     log_result(task, "knn", settings, val_acc=acc, predict_time_s=t.elapsed,
@@ -148,8 +159,24 @@ def apply_lda(X, lda, dims):
     # multiply it by the first dims columns of W (remember that W's column are ordered by best class separation first) to produce new features that LDA considers useful for distinguishing classes.
     return (X.astype(np.float64) - mean) @ W[:, :dims] 
 
+def power_normalize(X, exponent):
+    """Raise every feature to exponent (0.5 = square root), then rescale each row to length 1.
+    Only valid for non-negative features (the image features are)."""
+    return l2_normalize(X.astype(np.float64) ** exponent)
+
+def append_lda(X_fit, y_fit, X_other, n_classes, dims, shrink, weight):
+    """Keep every original feature and add dims LDA features on the right, scaled by weight.
+    LDA is learned on X_fit only (the training rows); X_other (validation or test) is just projected."""
+    fitted = fit_lda(X_fit, y_fit, n_classes, shrink)
+    Z_fit = apply_lda(X_fit, fitted, dims)
+    Z_other = apply_lda(X_other, fitted, dims)
+    scale = np.sqrt(np.mean(np.sum(Z_fit ** 2, axis=1))) # find scale so that LDA row lengths become 1 so it matches the square-root transformed values and doesn't dominate
+    X_fit = np.hstack([X_fit, weight * Z_fit / scale]) # scale LDA rows to 1, multiply by weight, then add to square-root transformed values
+    X_other = np.hstack([X_other, weight * Z_other / scale]) # same thing but for validation set
+    return X_fit, X_other
+
 # Experiment settings
-RUN_SWEEPS = False  
+RUN_SWEEPS = True  
 # True: redo every experiment and rewrite results/knn-results.csv
 # False: skip them and only run the final model
 
@@ -165,10 +192,24 @@ LDA_DIMS = {"image": [10, 25, 49], "sentiment": [1, 2]}
 LDA_SHRINKS = [0.1, 0.3, 1.0, 3.0, 10.0]
 LDA_KS = {"image": [1, 5, 10, 20, 50], "sentiment": [5, 20, 50, 100, 200, 400]}
 
+# Feature power transform (image only): exponent grid, and the k / voting power used with it
+EXPONENTS = [1.0, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2]
+EXPONENT_KS = [5, 10, 20]
+EXPONENT_POWERS = [16, 64]
+
+# Appended-LDA grid (image): original features + weight * LDA features
+APPEND_SHRINKS = [0.3, 3.0, 30.0, 1000.0]
+APPEND_WEIGHTS = [0.0, 0.25, 0.35, 0.5, 0.65, 0.8, 1.0, 2.0] # 0.0 = the sqrt-only model, as a control
+APPEND_KS = [10, 20]
+
 # Best settings found on the validation set: (k, power)
 FINAL = {"image": (20, 64), "sentiment": (200, 0)}
 # Tasks where LDA is applied before k-NN: (dims, shrink). Image is left out because LDA hurt it (see group "lda").
 FINAL_LDA = {"sentiment": (2, 0.1)}
+# Tasks where features are raised to this exponent (then L2-normalized) before k-NN. Sentiment is left out: its features can be negative.
+FINAL_EXPONENT = {"image": 0.5}
+# Tasks where LDA features are appended to the (transformed) features: (dims, shrink, weight)
+FINAL_APPEND = {"image": (49, 1000.0, 0.5)}
 
 if __name__ == "__main__":
     set_seed()
@@ -213,6 +254,24 @@ if __name__ == "__main__":
                         for p in POWERS:
                             run_one(task, (X_tr, y_tr, X_val, y_val), k, p, "euclidean", False,
                                     with_power=True, group="lda", lda=(dims, shrink))
+        
+        # element-wise power transform on image features (validation split only)
+        print("\n--- exponent (image) ---")
+        X_tr, y_tr, X_val, y_val, _, _ = get_task_data("image")
+        for e in EXPONENTS:
+            for k in EXPONENT_KS:
+                for p in EXPONENT_POWERS:
+                    run_one("image", (X_tr, y_tr, X_val, y_val), k, p, "euclidean", False,
+                            with_power=True, group="exponent", exponent=e)
+
+        # sqrt features + appended LDA features (image only, validation split only)
+        print("\n--- appended LDA (image) ---")
+        X_tr, y_tr, X_val, y_val, _, _ = get_task_data("image")
+        for shrink in APPEND_SHRINKS:
+            for weight in APPEND_WEIGHTS:
+                for k in APPEND_KS:
+                    run_one("image", (X_tr, y_tr, X_val, y_val), k, 64, "euclidean", False, with_power=True,
+                            group="append lda", exponent=0.5, append=(49, shrink, weight))
 
         mark_best()
 
@@ -227,6 +286,14 @@ if __name__ == "__main__":
     # final model, error analysis
     for task, (k, p) in FINAL.items():
         X_tr, y_tr, X_val, y_val, X_test, test_ids = get_task_data(task)
+
+        if task in FINAL_EXPONENT:
+            X_tr, X_val = power_normalize(X_tr, FINAL_EXPONENT[task]), power_normalize(X_val, FINAL_EXPONENT[task])
+
+        if task in FINAL_APPEND:
+            dims, shrink, weight = FINAL_APPEND[task]
+            X_tr, X_val = append_lda(X_tr, y_tr, X_val, NUM_CLASSES[task], dims, shrink, weight) # LDA learned on the train split only
+
         if task in FINAL_LDA:
             dims, shrink = FINAL_LDA[task]
             fitted = fit_lda(X_tr, y_tr, NUM_CLASSES[task], shrink) # learned on the train split only
@@ -271,10 +338,19 @@ if __name__ == "__main__":
     test_ids_by_task = {}
     for task, (k, p) in FINAL.items():
         X_all, y_all, X_test, test_ids = load_task(task) # every labeled row, no split
+
+        if task in FINAL_EXPONENT: # no fitting involved, so the same formula is applied to train and test
+            X_all, X_test = power_normalize(X_all, FINAL_EXPONENT[task]), power_normalize(X_test, FINAL_EXPONENT[task])
+
+        if task in FINAL_APPEND:
+            dims, shrink, weight = FINAL_APPEND[task]
+            X_all, X_test = append_lda(X_all, y_all, X_test, NUM_CLASSES[task], dims, shrink, weight) # labeled data only, never the test set
+
         if task in FINAL_LDA:
             dims, shrink = FINAL_LDA[task]
             fitted = fit_lda(X_all, y_all, NUM_CLASSES[task], shrink)  # labeled data only, never the test set
             X_all, X_test = apply_lda(X_all, fitted, dims), apply_lda(X_test, fitted, dims)
+
         model = KNN(k=k, power=p)
         model.fit(X_all, y_all)
         test_preds[task] = model.predict(X_test)
@@ -287,4 +363,4 @@ if __name__ == "__main__":
 
     build_submission(test_ids_by_task["image"], test_preds["image"],
                     test_ids_by_task["sentiment"], test_preds["sentiment"],
-                    out_name="sub_knn_v2.csv")
+                    out_name="sub_knn_v4.csv")
