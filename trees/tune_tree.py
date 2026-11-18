@@ -12,7 +12,7 @@ from common import (
     get_task_data,
     set_seed,
 )
-from tree_forest import DecisionTree
+from trees.tree_forest import DecisionTree
 
 
 # ============================================================
@@ -28,30 +28,31 @@ TASK = "image"
 # BUILD THE HYPERPARAMETER COMBINATIONS
 # ============================================================
 
-def build_configurations():
-    depth_values = [20, 30, 40, 60, 80]
-    split_values = [10, 20, 40]
-    leaf_values = [1, 5, 10]
 
+def build_configurations():
     configurations = []
 
-    combinations = product(
-        depth_values,
-        split_values,
-        leaf_values,
-    )
+    # (max_depth, min_samples_split, min_samples_leaf,
+    #  criterion, max_features)
+    
+    seeds = [42, 123, 456, 789, 1024]
 
-    for depth, minimum_split, minimum_leaf in combinations:
-        # A split must be able to create two leaves.
-        # Skipping this condition avoids testing redundant settings.
-        if minimum_split < 2 * minimum_leaf:
-            continue
+    combinations = [
+        (60, 20, 10, "gini", 100),
+        (60, 20, 10, "gini", 200),
+        (60, 20, 10, "gini", 250),
+        (60, 20, 10, "gini", 350),
+        (60, 20, 10, "gini", None),
+    ]
 
+    for depth, minimum_split, minimum_leaf, criterion, max_features in combinations:
         configuration = {
             "parameters": {
                 "max_depth": depth,
                 "min_samples_split": minimum_split,
                 "min_samples_leaf": minimum_leaf,
+                "criterion": criterion,
+                "max_features": max_features,
             }
         }
 
@@ -62,6 +63,7 @@ def build_configurations():
         configuration["id"] = f"C{number:02}"
 
     return configurations
+
 
 
 # ============================================================
@@ -157,6 +159,8 @@ def evaluate_configuration(
         "max_depth": parameters["max_depth"],
         "min_samples_split": parameters["min_samples_split"],
         "min_samples_leaf": parameters["min_samples_leaf"],
+        "criterion": parameters["criterion"],
+        "max_features": parameters["max_features"],
         "training_samples": len(y_subset),
         "validation_samples": len(y_validation),
         "split_seed": SEED,
@@ -183,12 +187,11 @@ def run_experiment(task):
 
     # Each tuple contains:
     # (stage name, training fraction, number allowed to advance)
+    
     stages = [
-        ("10_percent", 0.10, 6),
-        ("25_percent", 0.25, 3),
-        ("50_percent", 0.50, 2),
         ("100_percent", 1.00, 1),
     ]
+
 
     all_results = []
 
@@ -249,7 +252,9 @@ def run_experiment(task):
                 "Parameters:         "
                 f"depth={result['max_depth']}, "
                 f"split={result['min_samples_split']}, "
-                f"leaf={result['min_samples_leaf']}"
+                f"leaf={result['min_samples_leaf']}, "
+                f"criterion={result['criterion']}, "
+                f"max_features={result['max_features']}"
             )
             print(
                 "Training accuracy:  "

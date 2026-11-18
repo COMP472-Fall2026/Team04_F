@@ -15,12 +15,13 @@ class Node:
         self.value = value
 
 class DecisionTree:
-    def __init__(self, max_depth=10, min_samples_split=2, min_samples_leaf=1,criterion="gini",max_features=None):
+    def __init__(self, max_depth=10, min_samples_split=2, min_samples_leaf=1,criterion="gini",max_features=None,random_state=None):
         self.max_depth = max_depth #Deepest we allow the tree to go (Deeper trees typically have more overfitting)
         self.min_samples_split = min_samples_split #Minimum samples required to split a node
         self.min_samples_leaf = min_samples_leaf
         self.criterion = criterion #How splits are evaluated
         self.max_features = max_features
+        self.random_state = random_state #Seed for this tree's own random feature sampling (None = not reproducible)
 
     def fit(self, X, y):
         if not isinstance(self.criterion, str) or self.criterion.lower() not in ("gini", "entropy"):
@@ -97,6 +98,10 @@ class DecisionTree:
             self._max_features = max(1, int(self.max_features * self.n_features))
         else:
             raise ValueError("max_features must be None, an int, a float, 'sqrt', or 'log2'")
+
+        # Each tree owns its random generator, so its feature draws depend only
+        # on random_state, not on how many other trees ran before it.
+        self._rng = np.random.default_rng(self.random_state)
 
         self.root = self._grow_tree(X, y)
         return self
@@ -178,7 +183,7 @@ class DecisionTree:
         max_features = getattr(self, "_max_features", num_features)
         if max_features < num_features:
             feature_indices = np.sort(
-                np.random.choice(num_features, max_features, replace=False)
+                self._rng.choice(num_features, max_features, replace=False)
             )
         else:
             feature_indices = np.arange(num_features)

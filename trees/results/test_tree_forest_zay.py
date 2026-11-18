@@ -1,6 +1,6 @@
 import numpy as np
 
-from tree_forest_zay import DecisionTree
+from trees.tree_forest_zay import DecisionTree
 
 if __name__ == "__main__":
     X = np.array([
