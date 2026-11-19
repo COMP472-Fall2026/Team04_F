@@ -176,7 +176,7 @@ def append_lda(X_fit, y_fit, X_other, n_classes, dims, shrink, weight):
     return X_fit, X_other
 
 # Experiment settings
-RUN_SWEEPS = True  
+RUN_SWEEPS = False  
 # True: redo every experiment and rewrite results/knn-results.csv
 # False: skip them and only run the final model
 
