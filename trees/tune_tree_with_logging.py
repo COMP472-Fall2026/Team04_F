@@ -29,7 +29,7 @@ from trees.tree_forest import DecisionTree
 # SETTINGS
 # ============================================================
 
-TASK = "image"  # Change to "sentiment" for the other dataset.
+TASK = "sentiment"  # Change to "sentiment" or "image" for the other dataset.
 CV_FOLDS = 5    # Set to 1 to use common.py's fixed 80/20 split instead.
 
 DEPTH_VALUES = [10, 20, 30, 40, 60]
