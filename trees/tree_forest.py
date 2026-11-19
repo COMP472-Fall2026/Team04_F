@@ -319,7 +319,6 @@ class DecisionTree:
             return self._traverse_tree(x, node.left)
         return self._traverse_tree(x, node.right)
 
-
 if __name__ == "__main__":
     set_seed()
 
