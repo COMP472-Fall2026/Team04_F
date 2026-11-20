@@ -23,8 +23,7 @@ from forests.random_forest import RandomForest
 
 # Change these before starting a new run. A changed configuration is rejected
 # if you try to resume into an existing run directory.
-BASE = dict(max_depth=40, min_samples_split=20, min_samples_leaf=5,
-            criterion="gini", max_features="sqrt", bootstrap=True)
+BASE = dict(max_depth=40, min_samples_split=20, min_samples_leaf=5,criterion="gini", max_features="sqrt", bootstrap=True)
 DEPTHS = [10, 20, 40, 60]
 FEATURES = ["log2", "sqrt", 0.1, 0.25]
 COUNTS = [10, 25, 50, 100, 200]

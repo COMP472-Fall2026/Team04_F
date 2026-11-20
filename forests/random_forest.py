@@ -138,3 +138,48 @@ class RandomForest:
 
         #np.unique() sorts the labels, so np.argmax() returns the first label if there is a tie
         return self.classes[np.argmax(votes, axis=1)]
+
+    
+if __name__ == "__main__":
+    from pathlib import Path
+    from common import load_task, set_seed, SUBMISSIONS_DIR
+
+    set_seed()
+
+    # 1. Select the dataset
+    task = "image"  # Change to "sentiment" if needed
+
+    # 2. Retrieve the dataset
+    X_train, y_train, X_test, test_ids = load_task(task)
+
+    # 3. Create the Random Forest
+    forest = RandomForest(
+        n_estimators=25,
+        max_depth=40,
+        min_samples_split=20,
+        min_samples_leaf=5,
+        criterion="gini",
+        max_features="sqrt",
+        bootstrap=True,
+        random_state=42
+    )
+
+    # 4. Train the Random Forest
+    forest.fit(X_train, y_train)
+
+    # 5. Predict the test set
+    predictions = forest.predict(X_test)
+
+    # 6. Save predictions to CSV
+    output_dir = Path(SUBMISSIONS_DIR)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    output_path = output_dir / f"random_forest_{task}_predictions.csv"
+
+    pd.DataFrame({
+        "id": test_ids,
+        "label": predictions.astype(int)
+    }).to_csv(output_path, index=False)
+
+    print(f"Saved {len(predictions)} predictions to {output_path}")
+
