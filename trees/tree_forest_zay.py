@@ -15,12 +15,16 @@ class Node:
         self.value = value
 
 class DecisionTree:
-    def __init__(self, max_depth=10, min_samples_split=2, min_samples_leaf=1,max_features=None):
+    def __init__(self, max_depth=10, min_samples_split=2, min_samples_leaf=1,max_features=None, criterion="entropy"):
+        if not isinstance(criterion, str) or criterion.lower() not in ("gini", "entropy"):
+            raise ValueError("criterion must be either 'gini' or 'entropy'")
+
         self.root = None
         self.max_depth = max_depth #Deepest we allow the tree to go (Deeper trees typically have more overfitting)
         self.min_samples_split = min_samples_split #Minimum samples required to split a node
         self.min_samples_leaf = min_samples_leaf #Minimum samples required per potential child for a node to be allowed
         self.max_features = max_features #The maximum number of features considered when searching for the best split at each node (They change for each possible split)
+        self.criterion = criterion.lower() #How splits are evaluated
 
     def fit(self, X, y):
         """Encapsulate the decision tree training process with the methods within its body"""
@@ -62,37 +66,53 @@ class DecisionTree:
         return Node(feature_index=best_feature_index, threshold=best_threshold, left=left_child, right=right_child) #Return the reference to our root node 
 
     def _best_split(self, X, y):
-        """Based on all possible features with the X passed, what is roughly (only rough cuz thresholds are not gone through exhaustively) the best split (feature to use + threshold)"""
-        number_of_features = X.shape[1] #.shape returns a tuple containing (nb_of_entires, nb_of_features_per_entry)
+        """Based on all possible features with the X passed, what is the best split (feature to use + threshold)"""
+        number_of_samples, number_of_features = X.shape #.shape returns a tuple containing (nb_of_entires, nb_of_features_per_entry)
+
+        unique_labels, label_codes = np.unique(y, return_inverse=True) #label_codes = array of length y. The value at a given index indicates the index of its associated unique label from unique_labels
+        n_classes = len(unique_labels) #Tells us how many distinct classes there are
+
+        total_counts = np.bincount(label_codes, minlength=n_classes) #Given an index n, the total_counts array will tell us how many times n appeared in the label_codes at index n
 
         best_gain = 0
         best_feature_index = None
         best_threshold = None
 
+        parent_impurity = self._impurity_from_counts(total_counts)
+
         for feature_index in range(number_of_features):
-            feature_column = X[:, feature_index] #Give me an np array containing every rows' feature column value
-            unique_values = np.unique(feature_column) #Gives up an np array with ONLY unique values
+            sorted_indices = np.argsort(X[:, feature_index]) #Sorted_indices according to the given feature
+            sorted_values = X[sorted_indices, feature_index] #Sorted_values contains the feature values associated to each index in sorted_indices
+            sorted_labels = label_codes[sorted_indices] #Sorted_labels contains the label values associated to each index in sorted_indices
 
-            if len(unique_values) < 2: #If the feature has < 2 entered values among all the training sample records, then its a useless split since one child will be empty
-                continue
+            #Initially, all samples are on the right.
+            #These arrays are the same structure as total counts. There lengths represent the amount of features and the values at each index indicate how much they appear
+            left_counts = np.zeros(n_classes, dtype=int)
+            right_counts = total_counts.copy()
 
-            thresholds = (unique_values[:-1] + unique_values[1:]) / 2 #Generates appropriate threshold values (better than just trying every threshold between min and max) that will be systematically tested to find the best one
+            for i in range(number_of_samples - 1): #No need to consider the last entry because we know we cannot leave the right empty
 
-            for threshold in thresholds: #Testing every threshold
-                left_indices, right_indices = self._split(X, feature_index, threshold)
+                label = sorted_labels[i]
+                left_counts[label] += 1
+                right_counts[label] -= 1
 
-                if (len(left_indices) < self.min_samples_leaf or len(right_indices) < self.min_samples_leaf): #Condition check ensuring the minimum amount of samples per node is met
+                #Equal feature values cannot be separated by a threshold.
+                if sorted_values[i] == sorted_values[i + 1]:
                     continue
 
-                y_left = y[left_indices]
-                y_right = y[right_indices]
+                n_left = i + 1
+                n_right = number_of_samples - n_left
 
-                gain = self._information_gain(y, y_left, y_right)
+                # Respect the minimum leaf size.
+                if (n_left < self.min_samples_leaf or n_right < self.min_samples_leaf):
+                    continue
 
-                if gain > best_gain: #Iterate through each threshold and find the best gain (We save the value of the gain, the feature used, and the threshold used)
+                gain = self._information_gain(parent_impurity, left_counts, right_counts)
+
+                if gain > best_gain:
                     best_gain = gain
                     best_feature_index = feature_index
-                    best_threshold = threshold
+                    best_threshold = (sorted_values[i] + sorted_values[i + 1]) / 2
 
         return best_feature_index, best_threshold
 
@@ -105,28 +125,47 @@ class DecisionTree:
 
         return left_indices, right_indices
 
-    def _information_gain(self, y, y_left, y_right):
-        """Returns the information gained according to the split of labels in y_left and y_right with y being their parent"""
-        #y_left and y_right returns each have the LABELS of the elements that are associated to the indexes found in left_indicies and right_indicies
-        
-        if len(y_left) == 0 or len(y_right) == 0: #Basically saying that there's literally no value in the split because one of the children is dead
-            return 0
+    def _information_gain(self, parent_impurity, left_counts, right_counts):
+        """Returns the impurity reduction for the selected split criterion."""
 
-        parent_entropy = self._entropy(y)
+        n_left = np.sum(left_counts)
+        n_right = np.sum(right_counts)
+        n_total = n_left + n_right
 
-        left_weight = len(y_left) / len(y) #Fraction representing how many of our entries are going left
-        right_weight = len(y_right) / len(y) #Fraction representing how many of our entries are going right 
+        if n_left == 0 or n_right == 0:
+            return 0.0
 
-        conditional_entropy = (left_weight * self._entropy(y_left) + right_weight * self._entropy(y_right))
+        left_impurity = self._impurity_from_counts(left_counts)
+        right_impurity = self._impurity_from_counts(right_counts)
+        weighted_child_impurity = ((n_left / n_total) * left_impurity + (n_right / n_total) * right_impurity)
 
-        information_gain = parent_entropy - conditional_entropy
+        return parent_impurity - weighted_child_impurity
 
-        return information_gain
+    def _gini(self, y):
+        """Standard Gini formula used to calculate the impurity of values within y"""
+        if len(y) == 0:
+            return 0.0
+
+        unique_labels, counts = np.unique(y, return_counts=True)
+        probabilities = counts / len(y)
+        return 1 - np.sum(probabilities ** 2)
 
     def _entropy(self, y):
         """Standard entropy formula used to calculate the randomness of values within y"""
         unique_labels, counts = np.unique(y, return_counts=True)
         probabilities = counts / len(y)
+        return -np.sum(probabilities * np.log2(probabilities))
+
+    def _impurity_from_counts(self, counts):
+        """Impurity calculation from class counts using the selected criterion"""
+        nonzero_counts = counts[counts > 0]
+        if len(nonzero_counts) == 0:
+            return 0.0
+
+        probabilities = nonzero_counts / nonzero_counts.sum()
+        if self.criterion == "gini":
+            return 1 - np.sum(probabilities ** 2)
+
         return -np.sum(probabilities * np.log2(probabilities))
 
     def _most_common_label(self, y):

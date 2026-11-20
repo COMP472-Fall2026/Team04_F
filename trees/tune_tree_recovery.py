@@ -147,10 +147,8 @@ def evaluate_configuration(task, configuration, fold_number, tree_seed, fold):
     X_train, y_train, X_val, y_val = fold
     parameters = configuration["parameters"]
 
-    # tree_forest.py uses np.random.choice (the global NumPy RNG), not a
-    # random_state constructor argument. Reset before EVERY independent fit.
     set_seed(tree_seed)
-    tree = DecisionTree(**parameters)
+    tree = DecisionTree(**parameters, random_state=tree_seed)
 
     with Timer() as training_timer:
         tree.fit(X_train, y_train)
