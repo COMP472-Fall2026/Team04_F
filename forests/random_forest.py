@@ -7,7 +7,7 @@ from trees.decision_tree import DecisionTree
 class RandomForest:
     """Random Forest classifier built from our own DecisionTree class."""
 
-    def __init__(self, n_estimators=100, max_depth=40, min_samples_split=20, min_samples_leaf=5, criterion="gini", max_features="sqrt",bootstrap=True, random_state=None):
+    def __init__(self, n_estimators=100, max_depth=40, min_samples_split=20, min_samples_leaf=5, criterion="gini", max_features="sqrt",bootstrap=True, random_state=None, tree_groups=None):
         self.n_estimators = n_estimators #Number of decision trees we create for the forest
         self.max_depth = max_depth #Deepest we allow each tree to go (Deeper trees typically have more overfitting)
         self.min_samples_split = min_samples_split #Minimum samples required to split a node within any tree
@@ -17,6 +17,7 @@ class RandomForest:
         self.bootstrap = bootstrap #Whether every tree trains on a random sample taken with replacement
         self.random_state = random_state #Seed used to make our row sampling and individual tree seeds reproducible
         self.trees = [] #Stores every fitted DecisionTree object belonging to our forest
+        self.tree_groups = tree_groups
 
     def _prepare_features(self, X, fitting=False):
         """Used to prepare the numerical features in X in the same order as the training data"""
@@ -67,6 +68,52 @@ class RandomForest:
         if not isinstance(self.bootstrap, (bool, np.bool_)):
             raise ValueError("bootstrap must be a boolean")
 
+        #Build the parameters for every tree, applying group overrides in the order provided
+        tree_parameters = {
+            "max_depth": self.max_depth,
+            "min_samples_split": self.min_samples_split,
+            "min_samples_leaf": self.min_samples_leaf,
+            "criterion": self.criterion,
+            "max_features": self.max_features
+        }
+        tree_configurations = None
+        if self.tree_groups is not None:
+            if not isinstance(self.tree_groups, (list, tuple)):
+                raise ValueError("tree_groups must be a list or tuple of dictionaries")
+
+            allowed_group_keys = {"count", *tree_parameters}
+            tree_configurations = []
+            total_count = 0
+            for group_index, group in enumerate(self.tree_groups):
+                if not isinstance(group, dict):
+                    raise ValueError(f"tree_groups[{group_index}] must be a dictionary")
+
+                unknown_keys = set(group) - allowed_group_keys
+                if unknown_keys:
+                    names = ", ".join(sorted(str(key) for key in unknown_keys))
+                    raise ValueError(f"tree_groups[{group_index}] contains unknown hyperparameter(s): {names}")
+                if "count" not in group:
+                    raise ValueError(f"tree_groups[{group_index}] must contain a count")
+
+                count = group["count"]
+                if (not isinstance(count, (int, np.integer)) or isinstance(count, (bool, np.bool_)) or count < 1):
+                    raise ValueError(f"tree_groups[{group_index}]['count'] must be a positive integer")
+
+                group_parameters = tree_parameters.copy()
+                group_parameters.update({key: value for key, value in group.items() if key != "count"})
+                tree_configurations.append((int(count), group_parameters))
+                total_count += int(count)
+
+            if total_count != self.n_estimators:
+                raise ValueError(
+                    f"tree group counts must sum to n_estimators ({self.n_estimators}); got {total_count}"
+                )
+            tree_configurations = [
+                parameters
+                for count, parameters in tree_configurations
+                for _ in range(count)
+            ]
+
         X = self._prepare_features(X, fitting=True) #Prepare and remember the features our trees will be fitted with
         y = np.asarray(y) #Ensure the labels passed behave as an np array
         if y.ndim == 2 and 1 in y.shape:
@@ -100,13 +147,14 @@ class RandomForest:
 
             tree_seed = int(feature_rng.integers(0, 2**63)) #Give each tree its own random seed
 
-            #Create a decision tree according to the restrictions given to our forest
+            #Create a decision tree according to the restrictions given to our forest and its group
+            parameters = tree_parameters if tree_configurations is None else tree_configurations[i]
             tree = DecisionTree(
-                max_depth=self.max_depth,
-                min_samples_split=self.min_samples_split,
-                min_samples_leaf=self.min_samples_leaf,
-                criterion=self.criterion,
-                max_features=self.max_features,
+                max_depth=parameters["max_depth"],
+                min_samples_split=parameters["min_samples_split"],
+                min_samples_leaf=parameters["min_samples_leaf"],
+                criterion=parameters["criterion"],
+                max_features=parameters["max_features"],
                 random_state=tree_seed
             )
             tree.fit(X_sample, y_sample) #Fit the tree using its own collection of training entries
@@ -154,13 +202,13 @@ if __name__ == "__main__":
 
     # 3. Create the Random Forest
     forest = RandomForest(
-        n_estimators=25,
-        max_depth=40,
+        n_estimators=200,
+        max_depth=60,
         min_samples_split=20,
         min_samples_leaf=5,
         criterion="gini",
         max_features="sqrt",
-        bootstrap=True,
+        bootstrap=False,
         random_state=42
     )
 
