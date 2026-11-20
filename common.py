@@ -161,7 +161,7 @@ RESULT_FIELDS = [
 
 
 def log_result(task, method, hyperparameters, train_acc=None, val_acc=None,
-               train_time_s=None, predict_time_s=None, notes=""):
+               train_time_s=None, predict_time_s=None, notes="", results_file=RESULTS_FILE):
     """
     Append one row to results/results.csv.
 
@@ -170,7 +170,7 @@ def log_result(task, method, hyperparameters, train_acc=None, val_acc=None,
                    train_acc=0.9, val_acc=0.71, predict_time_s=3.2)
     """
     os.makedirs(RESULTS_DIR, exist_ok=True)
-    new_file = not os.path.exists(RESULTS_FILE)
+    new_file = not os.path.exists(results_file)
 
     def fmt(v):
         return "" if v is None else (f"{v:.4f}" if isinstance(v, float) else v)
@@ -185,7 +185,7 @@ def log_result(task, method, hyperparameters, train_acc=None, val_acc=None,
         "predict_time_s": fmt(predict_time_s),
         "notes": notes,
     }
-    with open(RESULTS_FILE, "a", newline="") as f:
+    with open(results_file, "a", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=RESULT_FIELDS)
         if new_file:
             writer.writeheader()
