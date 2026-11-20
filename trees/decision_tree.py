@@ -7,16 +7,15 @@ from collections import Counter
 from common import get_task_data, accuracy, set_seed
 
 class Node:
-    def __init__(self, feature_index=None, threshold=None, left=None,right=None,value=None, random_state=None):
+    def __init__(self, feature_index=None, threshold=None, left=None,right=None,value=None):
         self.feature_index = feature_index
         self.threshold = threshold #Threshold(Symbol: S), is the pivot value for our splitting
         self.left = left
         self.right = right
         self.value = value
-        self.random_state = random_state
 
 class DecisionTree:
-    def __init__(self, max_depth=10, min_samples_split=2, min_samples_leaf=1,max_features=None, criterion="entropy"):
+    def __init__(self, max_depth=10, min_samples_split=2, min_samples_leaf=1,max_features=None, criterion="entropy", random_state=None):
         if not isinstance(criterion, str) or criterion.lower() not in ("gini", "entropy"):
             raise ValueError("criterion must be either 'gini' or 'entropy'")
 
@@ -26,6 +25,10 @@ class DecisionTree:
         self.min_samples_leaf = min_samples_leaf #Minimum samples required per potential child for a node to be allowed
         self.max_features = max_features #The maximum number of features considered when searching for the best split at each node (They change for each possible split)
         self.criterion = criterion.lower() #How splits are evaluated
+        self.random_state = random_state
+        self.random_state = random_state
+        self._rng = np.random.default_rng(self.random_state)
+                                  
 
     def fit(self, X, y):
         """Encapsulate the decision tree training process with the methods within its body"""
@@ -102,7 +105,7 @@ class DecisionTree:
         # Randomly select features for this node
         feature_indices = self._rng.choice(number_of_features, size=n_features,replace=False)
 
-        for feature_index in range(feature_indices):
+        for feature_index in feature_indices:
             sorted_indices = np.argsort(X[:, feature_index]) #Sorted_indices according to the given feature
             sorted_values = X[sorted_indices, feature_index] #Sorted_values contains the feature values associated to each index in sorted_indices
             sorted_labels = label_codes[sorted_indices] #Sorted_labels contains the label values associated to each index in sorted_indices

@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 
 from common import DATA_DIR, SEED, accuracy, confusion_matrix
-from trees.tree_forest import DecisionTree
+from trees.decision_tree import DecisionTree
 from forests.random_forest import RandomForest
 
 # Change these before starting a new run. A changed configuration is rejected
