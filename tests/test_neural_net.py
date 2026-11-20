@@ -205,7 +205,7 @@ class NeuralNetworkTests(unittest.TestCase):
 
     def test_bad_hyperparameters_are_rejected(self):
         for kwargs in ({"hidden": ()}, {"epochs": 0}, {"dropout": 1}, {"learning_rate": -1},
-                       {"weight_decay": -1}, {"activation": "unknown"}, {"optimizer": "unknown"},
+                       {"weight_decay": -1}, {"activation": "unknown"}, {"activation": "gelu"}, {"optimizer": "unknown"},
                        {"batch_norm": True, "batch_size": 1}, {"early_stopping_metric": "unknown"}):
             with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
                 net.Config(**kwargs)

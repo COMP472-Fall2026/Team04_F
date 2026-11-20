@@ -5,7 +5,7 @@ Examples (run from the project directory):
     .venv/bin/python neural_net.py --sweep --finalize
     .venv/bin/python neural_net.py --task sentiment --hidden 128 --epochs 30
 
-See NEURAL_NETWORK.md for the experiment procedure and artifact descriptions.
+See NEURAL_NETWORK.md for training commands and saved results.
 """
 
 import argparse
@@ -50,8 +50,8 @@ class Config:
     def __post_init__(self):
         if not self.hidden or any(width <= 0 for width in self.hidden):
             raise ValueError("Provide at least one positive hidden-layer size.")
-        if self.activation not in ("relu", "tanh", "gelu"):
-            raise ValueError("activation must be relu, tanh, or gelu")
+        if self.activation not in ("relu", "tanh"):
+            raise ValueError("activation must be relu or tanh")
         if self.optimizer not in ("adam", "sgd"):
             raise ValueError("optimizer must be adam or sgd")
         if min(self.batch_size, self.epochs, self.patience) <= 0:
@@ -73,7 +73,7 @@ class NeuralNetwork(nn.Module):
 
     def __init__(self, input_dim, num_classes, config):
         super().__init__()
-        activations = {"relu": nn.ReLU, "tanh": nn.Tanh, "gelu": nn.GELU}
+        activations = {"relu": nn.ReLU, "tanh": nn.Tanh}
         layers = []
         previous = input_dim
         for width in config.hidden:
@@ -140,9 +140,8 @@ def train_epoch(model, loader, optimizer, device):
     loss_fn = nn.CrossEntropyLoss()
     for features, labels in loader:
         features, labels = features.to(device), labels.to(device)
-        # A final minibatch can have one row. Use running statistics for that
-        # row so BatchNorm can still train its affine parameters without
-        # discarding a training example or estimating variance from one value.
+        # BatchNorm needs two rows to estimate variance. Use running statistics
+        # for a final singleton batch, then restore training mode.
         singleton_layers = [layer for layer in model.modules()
                             if len(features) == 1 and isinstance(layer, nn.BatchNorm1d) and layer.training]
         for layer in singleton_layers:
@@ -254,7 +253,7 @@ def predict_checkpoint(path, X, device="cpu"):
 
 
 def experiment_configs(base):
-    """Change one factor at a time relative to the user's baseline."""
+    """Compare the baseline with five parameter changes."""
     return {
         "baseline": base,
         "one_hidden_layer": replace(base, hidden=(128,)),
@@ -266,12 +265,7 @@ def experiment_configs(base):
 
 
 def regularization_configs(base):
-    """Follow-up study of capacity and regularization after the initial sweep.
-
-    The first variants isolate individual factors; the final variants combine
-    smaller hidden layers and stronger weight decay. Selection still uses only
-    the shared validation split, never the public Kaggle score.
-    """
+    """Compare smaller networks, regularization, and input scaling."""
     return {
         "reference": base,
         "hidden_64": replace(base, hidden=(64,)),
@@ -441,8 +435,7 @@ def run_task(task, configs, directory, seed, device, finalize=False, plots=True)
                           predict_time_s=predict_time, notes=f"experiment={name}; artifacts={trial_dir}")
         print(f"[{task}/{name}] best epoch={best_epoch}, validation accuracy={row['val_acc']:.4f}", flush=True)
         if best is None or (row["val_acc"], -row["val_loss"]) > (best["row"]["val_acc"], -best["row"]["val_loss"]):
-            best = {"row": row, "config": config, "metrics": val_metrics, "history": history,
-                    "checkpoint": trial_dir / "validation_model.pt"}
+            best = {"row": row, "config": config, "metrics": val_metrics, "history": history}
 
     pd.DataFrame(rows).to_csv(directory / "experiments.csv", index=False)
     write_json(directory / "best.json", best["row"])
@@ -486,9 +479,9 @@ def parse_args(argv=None):
                        help="Compare eight settings including SGD and batch normalization.")
     study.add_argument("--moderate-sweep", action="store_true",
                        help="Compare the reference with nine moderate dropout/weight-decay settings.")
-    parser.add_argument("--finalize", action="store_true", help="Refit winners on all labeled data and save test predictions.")
+    parser.add_argument("--finalize", action="store_true", help="Refit selected models on all labeled data and save test predictions.")
     parser.add_argument("--hidden", type=int, nargs="+", default=[256, 64])
-    parser.add_argument("--activation", choices=["relu", "tanh", "gelu"], default="relu")
+    parser.add_argument("--activation", choices=["relu", "tanh"], default="relu")
     parser.add_argument("--learning-rate", type=float, default=0.001)
     parser.add_argument("--optimizer", choices=["adam", "sgd"], default="adam")
     parser.add_argument("--batch-size", type=int, default=128)
