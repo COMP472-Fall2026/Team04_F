@@ -185,28 +185,51 @@ class DecisionTree:
         return self._traverse_tree(x, node.right) #Does x belong in the right child?
 
 
+
+
+
 if __name__ == "__main__":
     set_seed()
 
-    for task in ["image", "sentiment"]:
-        #1. Retrieve the dataset
-        X_tr, y_tr, X_val, y_val, X_test, test_ids = get_task_data(task)
+    # 1. Select the dataset
+    task = "image"  # Change to "sentiment" if needed
 
-        #2. Create the decision tree
-        tree = DecisionTree(max_depth=10)
+    # 2. Retrieve the dataset
+    X_tr, y_tr, X_val, y_val, X_test, test_ids = get_task_data(task)
 
-        #3. Train the decision tree
-        tree.fit(X_tr, y_tr)
+    # 3. Create the decision tree
+    tree = DecisionTree(
+        max_depth=60,
+        min_samples_split=80,
+        min_samples_leaf=10,
+        criterion="gini",
+        max_features=None
+    )
 
-        #4. Evaluate on the training data
-        training_predictions = tree.predict(X_tr)
-        train_accuracy = accuracy(y_tr, training_predictions)
+    # 4. Train the decision tree on all labeled data
+    X_train = np.concatenate((X_tr, X_val), axis=0)
+    y_train = np.concatenate((y_tr, y_val), axis=0)
 
-        #5. Evaluate on the validation data
-        val_predictions = tree.predict(X_val)
-        val_accuracy = accuracy(y_val, val_predictions)
+    tree.fit(X_train, y_train)
 
-        #6. Display both results
-        print(f"\nResults for {task}:")
-        print(f"Training accuracy:   {train_accuracy}")
-        print(f"Validation accuracy: {val_accuracy}")
+    # 5. Predict the test set
+    predictions = tree.predict(X_test)
+
+    # 6. Save predictions to CSV
+    from pathlib import Path
+    import pandas as pd
+
+    output_dir = Path("submissions")
+    output_dir.mkdir(exist_ok=True)
+
+    output_path = output_dir / f"decision_tree_{task}_predictions.csv"
+
+    pd.DataFrame({
+        "id": test_ids,
+        "label": predictions.astype(int)
+    }).to_csv(output_path, index=False)
+
+    print(f"Saved {len(predictions)} predictions to {output_path}")
+
+
+

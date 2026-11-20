@@ -22,7 +22,7 @@ from common import (
     load_task,
     set_seed,
 )
-from trees.tree_forest import DecisionTree
+from trees.decision_tree import DecisionTree
 
 
 # ============================================================

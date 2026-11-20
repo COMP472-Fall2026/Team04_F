@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from trees.tree_forest_zay import DecisionTree
+from trees.decision_tree import DecisionTree
 
 
 class TestDecisionTreeCriterion(unittest.TestCase):
