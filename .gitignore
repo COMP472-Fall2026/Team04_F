@@ -239,6 +239,17 @@ data/*
 !results/neural_net/final/*/confused_classes.csv
 # Per-example splits, errors, and predictions remain covered by *.csv.
 
+# Selected tree and forest summaries; per-example predictions stay local.
+!/trees/results/*/*_grid_summary.csv
+!/trees/results/*/*_finalists.csv
+!/forests/results/*/image/stage[1-5]_*.csv
+!/forests/results/*/sentiment/stage[1-5]_*.csv
+!/forests/results/*/image/confusion_*.csv
+!/forests/results/*/sentiment/confusion_*.csv
+
+# Per-tree predictions used to resume forest tuning.
+/forests/results/**/tree_votes/
+
 submissions/*
 !submissions/.gitkeep
 

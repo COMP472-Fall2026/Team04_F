@@ -10,7 +10,7 @@
 Both models use ReLU, Adam at learning rate 0.001, dropout 0.2, weight decay
 0.0001, and minibatches of 128. The equally weighted mean validation accuracy
 is 52.35%. Full metrics and plots are in
-[results/neural_net/final/](results/neural_net/final/README.md).
+[results/neural_net/final/](results/neural_net/final/).
 
 ## Validation procedure
 
@@ -27,9 +27,9 @@ Reproduction commands are in [NEURAL_NETWORK.md](NEURAL_NETWORK.md).
 
 ## Experiments
 
-The aggregate log [results/results.csv](results/results.csv) contains 58 training
-runs: 42 image and 16 sentiment runs, including repeated references. Training
-batch size was always 128. The study varied hidden layers, activation, optimizer,
+The neural-network entries in [results/results.csv](results/results.csv) contain
+58 training runs: 42 image and 16 sentiment runs, including repeated references.
+Training batch size was always 128. The study varied hidden layers, activation, optimizer,
 learning rate, scaling, batch normalization, dropout, weight decay, epoch limits,
 and stopping rules. It did not compare batch sizes or multiple initialization
 seeds.

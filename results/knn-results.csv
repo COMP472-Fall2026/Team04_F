@@ -1,0 +1,848 @@
+task,method,hyperparameters,train_acc,val_acc,train_time_s,predict_time_s,notes
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False}",,0.5192,,3.7380,"k sweep, raw | BEST IN GROUP"
+image,knn,"{'k': 3, 'metric': 'euclidean', 'standardized': False}",,0.5105,,3.4782,"k sweep, raw"
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False}",,0.4920,,3.7314,"k sweep, raw"
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False}",,0.4440,,3.4498,"k sweep, raw"
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False}",,0.3982,,3.4887,"k sweep, raw"
+sentiment,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False}",,0.4883,,1.1886,"k sweep, raw"
+sentiment,knn,"{'k': 3, 'metric': 'euclidean', 'standardized': False}",,0.5167,,1.1638,"k sweep, raw"
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False}",,0.5413,,1.1810,"k sweep, raw"
+sentiment,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False}",,0.5496,,1.2155,"k sweep, raw"
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False}",,0.5708,,1.1885,"k sweep, raw"
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False}",,0.5821,,1.2051,"k sweep, raw"
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False}",,0.5837,,1.2218,"k sweep, raw | BEST IN GROUP"
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False}",,0.5704,,1.1820,"k sweep, raw"
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': True}",,0.4300,,3.3732,"k sweep, standardized | BEST IN GROUP"
+image,knn,"{'k': 3, 'metric': 'euclidean', 'standardized': True}",,0.4150,,3.3662,"k sweep, standardized"
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': True}",,0.3810,,3.3453,"k sweep, standardized"
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': True}",,0.3275,,3.4399,"k sweep, standardized"
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': True}",,0.2848,,3.3869,"k sweep, standardized"
+sentiment,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': True}",,0.4900,,1.1765,"k sweep, standardized"
+sentiment,knn,"{'k': 3, 'metric': 'euclidean', 'standardized': True}",,0.5233,,1.1664,"k sweep, standardized"
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': True}",,0.5404,,1.1856,"k sweep, standardized"
+sentiment,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': True}",,0.5542,,1.2014,"k sweep, standardized"
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': True}",,0.5800,,1.1697,"k sweep, standardized"
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': True}",,0.5792,,1.1657,"k sweep, standardized"
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': True}",,0.5821,,1.1641,"k sweep, standardized | BEST IN GROUP"
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': True}",,0.5637,,1.1985,"k sweep, standardized"
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0}",,0.4920,,3.3278,power sweep
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1}",,0.4920,,3.3242,power sweep
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4}",,0.4955,,3.3174,power sweep
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16}",,0.5235,,3.4042,power sweep
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64}",,0.5235,,3.7407,power sweep
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0}",,0.4440,,3.3885,power sweep
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1}",,0.4455,,3.4047,power sweep
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4}",,0.4612,,3.3752,power sweep
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16}",,0.5195,,3.3820,power sweep
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64}",,0.5228,,3.4232,power sweep
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0}",,0.3982,,3.4053,power sweep
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1}",,0.3992,,3.4034,power sweep
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4}",,0.4215,,3.7784,power sweep
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16}",,0.5155,,3.3131,power sweep
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64}",,0.5248,,3.3895,power sweep | BEST IN GROUP
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0}",,0.5708,,1.3084,power sweep
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1}",,0.5733,,1.2447,power sweep
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4}",,0.5746,,1.1856,power sweep
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16}",,0.5563,,1.1957,power sweep
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64}",,0.5092,,1.1705,power sweep
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0}",,0.5821,,1.1614,power sweep
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1}",,0.5867,,1.1676,power sweep
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4}",,0.5908,,1.1657,power sweep
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16}",,0.5758,,1.2008,power sweep
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64}",,0.5112,,1.1706,power sweep
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 0}",,0.5837,,1.1908,power sweep
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 1}",,0.5846,,1.1625,power sweep
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 4}",,0.5938,,1.1647,power sweep | BEST IN GROUP
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 16}",,0.5825,,1.1643,power sweep
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 64}",,0.5121,,1.1832,power sweep
+sentiment,knn,"{'k': 50, 'metric': 'cosine', 'standardized': False, 'power': 0}",,0.5892,,1.1884,cosine
+sentiment,knn,"{'k': 50, 'metric': 'cosine', 'standardized': False, 'power': 4}",,0.5933,,1.1941,cosine | BEST IN GROUP
+sentiment,knn,"{'k': 100, 'metric': 'cosine', 'standardized': False, 'power': 0}",,0.5725,,1.2023,cosine
+sentiment,knn,"{'k': 100, 'metric': 'cosine', 'standardized': False, 'power': 4}",,0.5829,,1.3351,cosine
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1390,,3.5420,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1390,,3.4582,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1390,,3.5356,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1390,,3.6848,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1390,,3.5191,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1557,,3.5355,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1552,,3.4828,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1522,,3.5361,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1425,,3.6585,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1395,,3.6075,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1727,,3.4945,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1742,,3.4459,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1645,,3.4443,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1437,,3.7066,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1395,,3.6248,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1725,,3.4465,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1727,,3.5473,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1727,,3.5161,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1452,,3.4816,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1395,,3.5140,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1885,,3.4888,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1885,,3.7421,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1832,,3.5139,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1452,,3.5175,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 0.1}",,0.1395,,3.4701,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1383,,3.4527,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1383,,3.4545,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1383,,3.4979,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1383,,3.5529,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1383,,3.5422,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1522,,3.5576,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1520,,3.7208,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1492,,3.5649,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1417,,3.4613,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1385,,3.4395,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1747,,3.4513,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1747,,3.5619,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1668,,3.5669,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1435,,3.4464,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1385,,3.4552,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1785,,3.4676,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1790,,3.5123,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1727,,3.5472,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1440,,3.5745,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1385,,3.5305,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1933,,3.6293,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1923,,3.4804,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1850,,3.6279,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1445,,3.5143,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 0.3}",,0.1385,,3.5494,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1403,,3.4662,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1403,,3.5832,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1403,,4.2589,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1403,,3.4439,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1403,,3.5632,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1583,,3.5687,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1580,,3.4613,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1537,,3.4709,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1425,,3.5239,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1403,,3.4916,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1722,,3.4441,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1737,,3.4506,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1643,,3.4581,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1445,,3.5253,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1405,,3.4335,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1827,,3.5693,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1835,,3.4469,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1735,,3.4547,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1452,,3.5489,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1405,,3.4423,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1872,,3.4322,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1885,,3.5447,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1845,,3.4890,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1457,,3.9352,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 1.0}",,0.1405,,3.4635,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1522,,3.7208,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1522,,3.4891,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1522,,3.6774,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1522,,3.4861,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1522,,3.6125,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1605,,3.4416,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1610,,3.5619,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1618,,3.4703,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1535,,3.4484,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1527,,3.4392,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1807,,3.5002,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1810,,3.5295,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1767,,3.4619,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1550,,3.4575,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1527,,3.4297,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1890,,3.7964,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1898,,3.7163,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1875,,3.8134,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1557,,4.0422,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1527,,3.5977,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1893,,3.8074,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1905,,3.9010,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1913,,3.4768,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1560,,3.6709,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 3.0}",,0.1527,,3.6715,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1557,,4.3351,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1557,,3.6198,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1557,,3.5554,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1557,,3.6629,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1557,,3.8045,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1745,,3.5374,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1740,,3.6433,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1695,,4.0465,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1610,,3.5786,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1560,,3.5907,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1878,,3.5671,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1867,,3.5408,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1817,,3.8065,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1610,,3.6809,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1560,,3.6303,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1955,,3.5626,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1970,,3.6133,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1905,,3.5504,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1628,,3.5334,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1560,,3.6023,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.2005,,3.6553,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.2028,,3.5528,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.2015,,3.4908,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1630,,3.5283,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 10, 'lda_shrink': 10.0}",,0.1560,,3.6486,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2037,,4.1328,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2037,,3.8498,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2037,,3.5691,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2037,,3.4451,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2037,,3.4741,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2280,,3.5051,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2278,,3.4673,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2300,,3.4418,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2160,,3.4526,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2055,,3.4250,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2525,,3.5292,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2527,,3.5198,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2577,,3.5505,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2283,,4.0415,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2060,,3.5027,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2602,,3.6758,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2612,,3.5688,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2675,,3.5108,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2367,,3.4738,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2062,,3.4572,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2710,,3.5458,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2722,,3.5338,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2787,,3.9710,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2412,,3.4916,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 0.1}",,0.2062,,3.4980,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2198,,3.4998,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2198,,3.5416,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2198,,3.5238,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2198,,3.5534,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2198,,3.6199,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2460,,3.4727,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2460,,3.6450,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2460,,3.4861,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2347,,3.5877,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2218,,3.5171,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2637,,3.5276,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2647,,3.5606,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2675,,3.5724,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2440,,3.5898,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2223,,3.5210,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2700,,3.4886,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2717,,3.5911,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2760,,3.4923,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2480,,3.4687,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2223,,3.4653,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2780,,3.4864,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2815,,3.7340,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2878,,3.8670,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2540,,3.9197,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 0.3}",,0.2223,,3.5580,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2343,,3.5316,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2343,,3.4485,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2343,,3.5580,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2343,,3.5717,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2343,,3.5685,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2632,,3.5865,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2625,,3.6548,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2642,,3.5538,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2530,,3.8434,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2355,,3.5112,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2735,,3.4618,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2732,,3.7615,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2815,,3.6324,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2577,,3.9737,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2355,,4.7808,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2745,,4.3299,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2752,,4.2484,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2863,,3.7133,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2630,,3.7301,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2355,,3.6367,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2782,,3.4872,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2795,,4.0342,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2943,,3.6044,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2695,,3.5604,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 1.0}",,0.2355,,3.6359,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2482,,3.6036,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2482,,3.5982,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2482,,3.7435,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2482,,3.7786,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2482,,3.6980,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2767,,3.5303,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2765,,3.8693,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2795,,3.6151,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2632,,3.6143,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2507,,3.6038,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2875,,3.5568,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2875,,3.8976,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2963,,3.5778,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2692,,3.7273,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2507,,3.4933,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2940,,3.4832,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2945,,3.5001,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.3033,,3.4732,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2752,,3.5405,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2510,,3.8413,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2923,,3.9805,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2948,,3.4943,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.3120,,3.5094,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2795,,3.4714,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 3.0}",,0.2510,,3.6633,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2675,,3.7334,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2675,,3.5223,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2675,,3.5080,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2675,,3.4744,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2675,,3.4457,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2918,,3.5975,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2925,,3.7347,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2960,,3.6246,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2830,,3.5586,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2690,,3.5272,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.3045,,3.5590,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.3058,,3.5924,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.3162,,3.7747,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2885,,3.6849,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2692,,3.6718,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.3020,,3.6450,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.3058,,3.7034,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.3197,,3.6341,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2948,,3.7529,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2692,,3.4829,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.3035,,3.6129,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.3025,,3.5714,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.3302,,3.5819,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2990,,3.5605,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 25, 'lda_shrink': 10.0}",,0.2692,,3.4631,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2602,,3.4987,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2602,,3.7030,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2602,,3.6396,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2602,,3.6122,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2602,,3.4489,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2858,,3.6119,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2860,,3.7185,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2885,,3.7831,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2815,,3.8681,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2630,,3.6241,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2955,,3.5670,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2953,,3.5407,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.3010,,3.4899,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.3000,,3.6411,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2647,,3.6216,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.3010,,3.4669,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.3020,,3.5761,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.3110,,3.4729,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.3083,,3.5047,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2645,,3.5816,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.3040,,3.4858,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.3058,,3.5043,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.3182,,3.4850,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.3215,,3.6618,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 0.1}",,0.2650,,3.6288,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2770,,3.6303,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2770,,3.6783,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2770,,3.5633,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2770,,3.6818,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2770,,3.5697,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2953,,3.8790,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2958,,3.4857,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2978,,3.6981,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2940,,3.6992,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2820,,3.6203,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2985,,3.5982,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.3013,,3.7572,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.3080,,3.8543,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.3093,,3.6579,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2828,,3.6983,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.3160,,3.6880,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.3170,,3.5733,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.3250,,3.6110,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.3232,,3.5017,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2828,,3.5874,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.3075,,3.6786,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.3103,,3.6361,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.3260,,3.5893,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.3292,,3.6818,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 0.3}",,0.2833,,3.6451,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3035,,3.5947,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3035,,3.6116,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3035,,3.7452,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3035,,3.4797,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3035,,3.5731,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3192,,3.6789,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3190,,3.4947,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3212,,3.5166,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3192,,3.5801,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3073,,3.5512,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3302,,3.4984,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3297,,3.5520,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3372,,3.6686,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3342,,3.5264,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3090,,3.5249,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3217,,3.4691,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3252,,3.4845,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3342,,3.5503,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3400,,3.4832,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3093,,3.5394,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3185,,3.4756,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3195,,3.4665,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3360,,3.7767,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3503,,3.5216,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 1.0}",,0.3093,,3.4788,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3190,,3.4781,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3190,,3.5048,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3190,,3.4459,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3190,,3.5308,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3190,,3.5442,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3410,,3.7307,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3422,,3.4883,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3453,,3.5357,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3463,,3.6143,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3230,,3.6558,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3478,,3.6861,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3495,,3.6090,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3560,,3.7204,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3575,,3.5233,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3240,,3.6554,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3473,,3.4693,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3493,,3.4659,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3640,,3.5760,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3663,,3.4829,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3245,,3.5924,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3330,,3.4755,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3345,,3.5735,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3575,,3.4943,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3743,,3.5146,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 3.0}",,0.3245,,3.6087,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3480,,3.4886,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3480,,3.5572,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3480,,3.6625,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3480,,3.6302,lda
+image,knn,"{'k': 1, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3480,,3.5483,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3728,,3.8019,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3735,,3.6233,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3765,,3.5923,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3683,,3.5944,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3510,,3.7610,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3725,,4.0220,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3720,,3.7778,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3852,,4.0491,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3807,,3.6647,lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3508,,4.7468,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3635,,3.9233,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3658,,3.7460,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3867,,3.8317,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3922,,3.8675,lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3518,,3.8970,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3375,,3.6650,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3412,,3.7008,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3733,,3.7563,lda
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3985,,3.6138,lda | BEST IN GROUP
+image,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 49, 'lda_shrink': 10.0}",,0.3518,,3.6471,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5658,,1.2421,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5617,,1.2104,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5558,,1.2224,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5542,,1.4480,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5513,,1.2505,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5871,,1.2040,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5867,,1.2374,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5654,,1.3433,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5596,,1.2288,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5563,,1.2666,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5962,,1.2887,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5992,,1.2308,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5654,,1.3239,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5596,,1.2005,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5563,,1.2309,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.6092,,1.2070,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.6046,,1.1952,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5654,,1.1963,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5596,,1.4880,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5563,,1.2508,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.6062,,1.2427,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.6075,,1.2438,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5654,,1.2838,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5596,,1.2421,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5563,,1.2480,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.6083,,1.2914,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.6100,,1.2806,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5654,,1.2884,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5596,,1.4313,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 0.1}",,0.5563,,1.3593,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5625,,1.2384,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5583,,1.2206,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5546,,1.1809,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5467,,1.1824,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5467,,1.3887,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5908,,1.5811,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5854,,1.2130,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5496,,1.1833,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5437,,1.1807,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5433,,1.2058,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.6025,,1.1794,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5958,,1.1774,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5500,,1.2041,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5437,,1.1800,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5433,,1.1788,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.6046,,1.2008,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.6004,,1.1929,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5500,,1.2032,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5437,,1.2078,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5433,,1.2163,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.6054,,1.2068,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.6012,,1.3025,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5500,,1.1965,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5437,,1.2038,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5433,,1.2008,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.6092,,1.2351,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.6038,,1.2201,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5500,,1.2420,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5437,,1.2329,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 0.3}",,0.5433,,1.2548,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5550,,1.2033,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5554,,1.2485,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5479,,1.1710,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5492,,1.1843,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5487,,1.2165,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5721,,1.1937,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5692,,1.2027,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5554,,1.1921,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5558,,1.1949,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5558,,1.2336,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5850,,1.1745,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5825,,1.3057,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5554,,1.1871,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5558,,1.1831,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5558,,1.1782,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5929,,1.1945,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5821,,1.2256,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5554,,1.3104,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5558,,1.2337,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5558,,1.1951,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5958,,1.2012,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5863,,1.2045,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5554,,1.2121,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5558,,1.2345,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5558,,1.2862,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5975,,1.2083,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5887,,1.2259,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5554,,1.3053,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5558,,1.2327,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 1.0}",,0.5558,,1.2323,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5454,,1.2043,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5446,,1.1779,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5350,,1.1938,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5342,,1.1928,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5337,,1.1822,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5775,,1.2819,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5696,,1.1825,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5375,,1.1877,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5337,,1.1761,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5321,,1.1762,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5750,,1.1826,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5750,,1.2210,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5371,,1.1903,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5337,,1.2002,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5321,,1.2006,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5867,,1.2467,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5713,,1.8122,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5367,,1.2027,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5337,,1.1974,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5321,,1.1931,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5892,,1.2234,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5779,,1.2129,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5367,,1.2782,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5337,,1.3899,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5321,,1.2485,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5929,,1.2176,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5825,,1.2203,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5367,,1.2367,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5337,,1.2319,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 3.0}",,0.5321,,1.2321,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5333,,1.2178,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5321,,1.2193,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5246,,1.1946,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5229,,1.1848,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5208,,1.2541,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5596,,1.2122,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5533,,1.2226,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5337,,1.3714,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5312,,1.2608,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5312,,1.2544,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5579,,1.3645,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5563,,1.2136,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5325,,1.2477,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5312,,1.2508,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5312,,1.2594,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5642,,1.2089,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5575,,1.2238,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5325,,1.2792,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5312,,1.3035,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5312,,1.2427,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5663,,1.2350,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5587,,1.2130,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5325,,1.2752,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5312,,1.2499,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5312,,1.2318,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5683,,1.2527,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5646,,1.2598,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5325,,1.2552,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5312,,1.2391,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 1, 'lda_shrink': 10.0}",,0.5312,,1.2302,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.6367,,1.2076,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.6242,,1.2905,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5946,,1.1795,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5842,,1.2097,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5817,,1.3014,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.6646,,1.2189,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.6550,,1.2305,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5967,,1.2945,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5842,,1.2984,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5817,,1.2270,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.6696,,1.2135,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.6617,,1.3043,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5967,,1.2721,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5842,,1.4160,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5817,,1.4073,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.6692,,1.2736,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.6713,,1.2106,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5962,,1.2013,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5842,,1.2143,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5817,,1.4491,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.6746,,1.2383,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.6771,,1.3117,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5962,,1.2436,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5842,,1.2982,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5817,,1.2257,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.6754,,1.2383,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.6754,,1.2299,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5962,,1.2314,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5842,,1.2367,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 0.1}",,0.5817,,1.2330,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6388,,1.1865,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6329,,1.1878,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5992,,1.1958,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5858,,1.1931,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5846,,1.1938,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6667,,1.1958,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6604,,1.2073,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6050,,1.1929,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5858,,1.1900,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5846,,1.2025,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6704,,1.2099,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6633,,1.1896,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6079,,1.1900,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5858,,1.2003,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5846,,1.1924,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6700,,1.1992,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6654,,1.1995,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6088,,1.2085,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5858,,1.1929,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5846,,1.1961,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6737,,1.2294,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6692,,1.2122,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6096,,1.2071,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5858,,1.2041,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5846,,1.2195,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6775,,1.2375,lda | BEST IN GROUP | BEST OVERALL
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6750,,1.2198,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.6100,,1.2312,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5858,,1.2344,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 0.3}",,0.5846,,1.2351,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.6275,,1.1886,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.6121,,1.1976,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5737,,1.2074,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5675,,1.1854,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5675,,1.1860,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.6583,,1.1959,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.6421,,1.1839,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5825,,1.1848,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5675,,1.1953,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5675,,1.1946,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.6608,,1.1986,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.6533,,1.1891,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5833,,1.1940,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5675,,1.2051,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5675,,1.2018,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.6687,,1.1971,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.6587,,1.2090,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5829,,1.2101,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5675,,1.2082,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5675,,1.2145,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.6713,,1.2230,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.6658,,1.2104,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5829,,1.2400,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5675,,1.2253,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5675,,1.2234,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.6713,,1.2297,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.6663,,1.2378,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5829,,1.2420,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5675,,1.2305,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 1.0}",,0.5675,,1.2261,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.6246,,1.1902,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.6129,,1.1917,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5604,,1.2118,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5517,,1.3035,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5504,,1.1993,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.6425,,1.1942,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.6429,,1.1861,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5637,,1.1995,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5517,,1.1882,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5504,,1.1743,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.6521,,1.1867,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.6508,,1.2358,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5642,,1.2236,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5517,,1.1753,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5504,,1.1852,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.6554,,1.2398,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.6554,,1.2351,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5650,,1.2068,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5517,,1.2348,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5504,,1.2438,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.6579,,1.2055,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.6554,,1.2037,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5663,,1.2281,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5517,,1.2458,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5504,,1.2154,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.6575,,1.3084,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.6562,,1.2447,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5671,,1.2361,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5517,,1.2281,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 3.0}",,0.5504,,1.2658,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5863,,1.1805,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5679,,1.1723,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5358,,1.1833,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5246,,1.1787,lda
+sentiment,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5221,,1.1956,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.6196,,1.3399,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.6092,,1.1826,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5417,,1.1855,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5246,,1.1838,lda
+sentiment,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5221,,1.1825,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.6221,,1.1835,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.6204,,1.2162,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5429,,1.2178,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5246,,1.1856,lda
+sentiment,knn,"{'k': 50, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5221,,1.1849,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.6321,,1.1892,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.6250,,1.1826,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5433,,1.1866,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5246,,1.2101,lda
+sentiment,knn,"{'k': 100, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5221,,1.1896,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.6362,,1.2135,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.6304,,1.2033,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5433,,1.1996,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5246,,1.2040,lda
+sentiment,knn,"{'k': 200, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5221,,1.2050,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 0, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.6375,,1.2160,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 1, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.6346,,1.2184,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 4, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5433,,1.2158,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5246,,1.2148,lda
+sentiment,knn,"{'k': 400, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'lda_dims': 2, 'lda_shrink': 10.0}",,0.5221,,1.2196,lda
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 1.0}",,0.5238,,3.6564,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 1.0}",,0.5235,,3.6656,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 1.0}",,0.5195,,3.5918,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 1.0}",,0.5228,,3.5854,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 1.0}",,0.5152,,3.5934,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 1.0}",,0.5248,,3.5924,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.8}",,0.5563,,3.6380,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.8}",,0.5570,,4.5482,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.8}",,0.5533,,3.8484,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.8}",,0.5580,,3.7332,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.8}",,0.5475,,3.9043,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.8}",,0.5603,,3.8705,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.7}",,0.5663,,4.1972,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.7}",,0.5673,,4.1511,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.7}",,0.5627,,4.0361,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.7}",,0.5680,,3.6724,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.7}",,0.5565,,3.6735,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.7}",,0.5693,,3.6707,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.6}",,0.5705,,3.6196,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.6}",,0.5710,,3.6194,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.6}",,0.5625,,3.5981,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.6}",,0.5733,,3.5986,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.6}",,0.5585,,3.6812,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.6}",,0.5750,,3.6456,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.5}",,0.5693,,3.6204,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5}",,0.5707,,3.5928,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.5}",,0.5635,,3.5941,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5}",,0.5750,,3.6282,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.5}",,0.5603,,3.6070,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5}",,0.5780,,3.5888,exponent | BEST IN GROUP
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.4}",,0.5707,,3.6840,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.4}",,0.5735,,3.5998,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.4}",,0.5660,,3.5957,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.4}",,0.5767,,3.7986,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.4}",,0.5623,,3.6531,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.4}",,0.5765,,3.6755,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.3}",,0.5690,,3.7490,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.3}",,0.5690,,3.6362,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.3}",,0.5635,,3.6885,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.3}",,0.5730,,3.7255,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.3}",,0.5567,,3.6412,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.3}",,0.5745,,3.6340,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.2}",,0.5630,,3.6419,exponent
+image,knn,"{'k': 5, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.2}",,0.5637,,3.6311,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.2}",,0.5557,,3.6533,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.2}",,0.5667,,3.6436,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 16, 'exponent': 0.2}",,0.5490,,3.6510,exponent
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.2}",,0.5673,,3.6353,exponent
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 0.0}",,0.5750,,3.6883,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 0.0}",,0.5780,,3.6537,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 0.25}",,0.5800,,3.6507,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 0.25}",,0.5840,,3.7277,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 0.35}",,0.5807,,3.6784,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 0.35}",,0.5835,,3.6669,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 0.5}",,0.5717,,3.6703,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 0.5}",,0.5750,,3.6843,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 0.65}",,0.5490,,3.7835,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 0.65}",,0.5527,,3.6676,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 0.8}",,0.5172,,3.8321,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 0.8}",,0.5200,,3.6551,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 1.0}",,0.4805,,3.6409,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 1.0}",,0.4828,,3.6161,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 2.0}",,0.3480,,3.6342,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 0.3, 'append_weight': 2.0}",,0.3473,,3.6542,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 0.0}",,0.5750,,3.6914,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 0.0}",,0.5780,,3.6211,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 0.25}",,0.5830,,3.6090,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 0.25}",,0.5845,,3.6164,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 0.35}",,0.5865,,3.6210,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 0.35}",,0.5885,,3.6841,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 0.5}",,0.5857,,4.2213,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 0.5}",,0.5870,,4.1567,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 0.65}",,0.5710,,3.7016,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 0.65}",,0.5737,,3.7458,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 0.8}",,0.5503,,4.7234,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 0.8}",,0.5530,,3.8842,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 1.0}",,0.5152,,3.6703,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 1.0}",,0.5180,,3.9062,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 2.0}",,0.3987,,3.7320,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 3.0, 'append_weight': 2.0}",,0.3995,,3.6723,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 0.0}",,0.5750,,3.6573,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 0.0}",,0.5780,,3.6622,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 0.25}",,0.5887,,3.8978,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 0.25}",,0.5900,,3.6508,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 0.35}",,0.5938,,3.6370,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 0.35}",,0.5958,,3.7214,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 0.5}",,0.5950,,3.6449,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 0.5}",,0.5972,,3.6238,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 0.65}",,0.5887,,3.6226,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 0.65}",,0.5930,,3.6462,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 0.8}",,0.5775,,3.6209,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 0.8}",,0.5810,,3.6208,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 1.0}",,0.5503,,3.6321,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 1.0}",,0.5515,,3.6191,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 2.0}",,0.4445,,3.6348,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 30.0, 'append_weight': 2.0}",,0.4452,,3.6281,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 0.0}",,0.5750,,3.6370,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 0.0}",,0.5780,,3.6298,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 0.25}",,0.5910,,3.6198,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 0.25}",,0.5915,,3.6191,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 0.35}",,0.5972,,3.6420,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 0.35}",,0.5995,,3.7052,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 0.5}",,0.5990,,3.6375,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 0.5}",,0.6022,,3.6599,append lda | BEST IN GROUP | BEST OVERALL
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 0.65}",,0.5948,,3.6283,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 0.65}",,0.6000,,4.3923,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 0.8}",,0.5845,,3.7581,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 0.8}",,0.5887,,4.1079,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 1.0}",,0.5630,,3.8328,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 1.0}",,0.5637,,3.9381,append lda
+image,knn,"{'k': 10, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 2.0}",,0.4582,,4.1612,append lda
+image,knn,"{'k': 20, 'metric': 'euclidean', 'standardized': False, 'power': 64, 'exponent': 0.5, 'append_dims': 49, 'append_shrink': 1000.0, 'append_weight': 2.0}",,0.4580,,3.7587,append lda

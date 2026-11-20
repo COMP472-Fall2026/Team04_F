@@ -65,9 +65,42 @@ Important options:
 | `--output-dir` | Choose a new directory for the run. |
 | `--finalize` | Refit and save test predictions. |
 
-The exact commands for the selected image and sentiment models, including
-combining their predictions, are in
-[results/neural_net/final/README.md](results/neural_net/final/README.md).
+## Reproduce the selected models
+
+Run these commands from the repository root after the setup in
+[README.md](README.md). Output directories must be new.
+
+```bash
+python neural_net.py --task image --hidden 512 256 --batch-norm \
+    --dropout 0.2 --weight-decay 0.0001 --learning-rate 0.001 --batch-size 128 \
+    --epochs 80 --patience 12 --early-stopping-metric accuracy --seed 42 \
+    --device cpu --threads 2 --finalize --output-dir results/neural_net/reproduce_image
+
+python neural_net.py --task sentiment --hidden 64 --no-standardize \
+    --dropout 0.2 --weight-decay 0.0001 --learning-rate 0.001 --batch-size 128 \
+    --epochs 80 --patience 12 --early-stopping-metric accuracy --seed 42 \
+    --device cpu --threads 2 --finalize --output-dir results/neural_net/reproduce_sentiment
+```
+
+Validation selects the epoch count; refitting then uses all labeled rows.
+The image model trains for 13 epochs and sentiment for 9 in the recorded runs.
+Combine their test predictions in template order:
+
+```bash
+python - <<'PYTHON'
+import pandas as pd
+from common import build_submission
+
+image = pd.read_csv('results/neural_net/reproduce_image/image/test_predictions.csv')
+sentiment = pd.read_csv('results/neural_net/reproduce_sentiment/sentiment/test_predictions.csv')
+build_submission(image['id'], image['label'], sentiment['id'], sentiment['label'],
+                 out_name='neural_net_reproduced.csv')
+PYTHON
+```
+
+The existing prepared upload is `submissions/neural_net_optimization_best.csv`.
+It uses the selected individual models described in
+[NEURAL_NETWORK_RESULTS.md](NEURAL_NETWORK_RESULTS.md).
 
 ## Reproduce the experiments
 
@@ -131,9 +164,13 @@ limits. Several combined configurations change more than one parameter.
 
 [NEURAL_NETWORK_RESULTS.md](NEURAL_NETWORK_RESULTS.md) explains the findings.
 `results/results.csv` stores all trial configurations and summary measurements.
-Selected-model evidence is kept in
-[results/neural_net/final/](results/neural_net/final/README.md): metrics, histories,
-curves, class reports, confusion matrices, and environment records.
+Selected-model evidence is kept in [results/neural_net/final/](results/neural_net/final/).
+Each task folder contains `best.json`, `history.csv`, learning curves,
+a class report, confusion matrix, frequent class confusions, environment details,
+and final-training measurements. `sources.json` records the copied files' origins
+and hashes. The folder also contains `regularization_tradeoff.png` and the
+validation-only `ensemble_probe.json`. The prepared CSV uses the two selected
+individual models.
 
 Raw run folders remain local. Each run saves its settings and data hashes in
 `environment.json`, epoch metrics in `history.csv`, and selected weights with

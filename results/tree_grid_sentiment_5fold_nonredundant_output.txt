@@ -1,0 +1,808 @@
+
+=================================================================
+Session started: 2026-11-19T14:59:24
+Output log: C:\Users\zayde\OneDrive\School\University (Concordia)\Semester 5\COMP 472 (Introduction to Artificial Intelligence)\Team Project\COMP472_Group04\results\tree_grid_sentiment_5fold_nonredundant_output.txt
+
+Task: sentiment | configurations: 500 | folds: 5
+Training/validation sizes: [(9600, 2400), (9600, 2400), (9600, 2400), (9600, 2400), (9600, 2400)]
+Total planned tree fits: 2,560 | already saved: 0
+Checkpoint: C:\Users\zayde\OneDrive\School\University (Concordia)\Semester 5\COMP 472 (Introduction to Artificial Intelligence)\Team Project\COMP472_Group04\results\tree_grid_sentiment_5fold_nonredundant_runs.csv
+
+STAGE 1: Full grid search
+
+[1/2,560] C001 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 73.22% | Validation: 44.92% | Gap: 28.30% | Time: 3.19s
+
+[2/2,560] C001 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 74.34% | Validation: 45.33% | Gap: 29.01% | Time: 3.12s
+
+[3/2,560] C001 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 75.12% | Validation: 44.25% | Gap: 30.87% | Time: 3.24s
+
+[4/2,560] C001 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 73.62% | Validation: 48.50% | Gap: 25.12% | Time: 3.11s
+
+[5/2,560] C001 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 73.39% | Validation: 47.17% | Gap: 26.22% | Time: 3.19s
+
+[6/2,560] C002 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 76.92% | Validation: 44.00% | Gap: 32.92% | Time: 16.16s
+
+[7/2,560] C002 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 76.51% | Validation: 45.58% | Gap: 30.93% | Time: 19.70s
+
+[8/2,560] C002 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 75.56% | Validation: 47.38% | Gap: 28.19% | Time: 18.03s
+
+[9/2,560] C002 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 76.35% | Validation: 46.96% | Gap: 29.40% | Time: 18.74s
+
+[10/2,560] C002 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 75.45% | Validation: 45.46% | Gap: 29.99% | Time: 19.36s
+
+[11/2,560] C003 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 76.26% | Validation: 43.67% | Gap: 32.59% | Time: 21.71s
+
+[12/2,560] C003 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 76.67% | Validation: 46.79% | Gap: 29.88% | Time: 7.50s
+
+[13/2,560] C003 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 77.73% | Validation: 45.25% | Gap: 32.48% | Time: 21.24s
+
+[14/2,560] C003 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 76.23% | Validation: 45.96% | Gap: 30.27% | Time: 17.77s
+
+[15/2,560] C003 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 77.48% | Validation: 47.75% | Gap: 29.73% | Time: 19.10s
+
+[16/2,560] C004 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 77.10% | Validation: 46.92% | Gap: 30.19% | Time: 9.59s
+
+[17/2,560] C004 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 77.92% | Validation: 44.75% | Gap: 33.17% | Time: 19.97s
+
+[18/2,560] C004 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 75.62% | Validation: 45.17% | Gap: 30.46% | Time: 33.67s
+
+[19/2,560] C004 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 76.19% | Validation: 48.38% | Gap: 27.81% | Time: 33.07s
+
+[20/2,560] C004 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 77.04% | Validation: 46.12% | Gap: 30.92% | Time: 37.73s
+
+[21/2,560] C005 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 79.27% | Validation: 47.25% | Gap: 32.02% | Time: 73.10s
+
+[22/2,560] C005 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 78.53% | Validation: 46.42% | Gap: 32.11% | Time: 71.71s
+
+[23/2,560] C005 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 78.90% | Validation: 46.42% | Gap: 32.48% | Time: 70.52s
+
+[24/2,560] C005 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 79.61% | Validation: 48.00% | Gap: 31.61% | Time: 72.78s
+
+[25/2,560] C005 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 78.60% | Validation: 44.62% | Gap: 33.98% | Time: 74.58s
+
+[26/2,560] C006 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 71.94% | Validation: 44.12% | Gap: 27.81% | Time: 9.60s
+
+[27/2,560] C006 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 72.16% | Validation: 46.00% | Gap: 26.16% | Time: 9.60s
+
+[28/2,560] C006 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 72.49% | Validation: 44.42% | Gap: 28.07% | Time: 9.54s
+
+[29/2,560] C006 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 73.76% | Validation: 46.62% | Gap: 27.14% | Time: 9.69s
+
+[30/2,560] C006 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 73.27% | Validation: 46.96% | Gap: 26.31% | Time: 9.75s
+
+[31/2,560] C007 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 75.35% | Validation: 45.21% | Gap: 30.15% | Time: 18.96s
+
+[32/2,560] C007 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 73.74% | Validation: 45.88% | Gap: 27.86% | Time: 18.19s
+
+[33/2,560] C007 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 74.65% | Validation: 44.42% | Gap: 30.23% | Time: 18.73s
+
+[34/2,560] C007 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 73.47% | Validation: 45.46% | Gap: 28.01% | Time: 17.01s
+
+[35/2,560] C007 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 74.98% | Validation: 47.83% | Gap: 27.15% | Time: 8.44s
+
+[36/2,560] C008 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 75.67% | Validation: 44.21% | Gap: 31.46% | Time: 7.03s
+
+[37/2,560] C008 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 74.91% | Validation: 44.75% | Gap: 30.16% | Time: 6.76s
+
+[38/2,560] C008 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 73.82% | Validation: 45.21% | Gap: 28.61% | Time: 6.56s
+
+[39/2,560] C008 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 74.73% | Validation: 45.62% | Gap: 29.10% | Time: 6.65s
+
+[40/2,560] C008 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 73.56% | Validation: 47.83% | Gap: 25.73% | Time: 6.38s
+
+[41/2,560] C009 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 77.65% | Validation: 46.88% | Gap: 30.77% | Time: 11.69s
+
+[42/2,560] C009 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 75.30% | Validation: 45.00% | Gap: 30.30% | Time: 31.87s
+
+[43/2,560] C009 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 76.52% | Validation: 46.67% | Gap: 29.85% | Time: 31.80s
+
+[44/2,560] C009 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 77.17% | Validation: 46.12% | Gap: 31.04% | Time: 32.23s
+
+[45/2,560] C009 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 74.88% | Validation: 46.08% | Gap: 28.79% | Time: 30.13s
+
+[46/2,560] C010 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 77.77% | Validation: 45.29% | Gap: 32.48% | Time: 30.09s
+
+[47/2,560] C010 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 77.42% | Validation: 48.46% | Gap: 28.96% | Time: 22.98s
+
+[48/2,560] C010 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 77.14% | Validation: 45.88% | Gap: 31.26% | Time: 26.96s
+
+[49/2,560] C010 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 77.22% | Validation: 46.88% | Gap: 30.34% | Time: 19.92s
+
+[50/2,560] C010 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 78.32% | Validation: 46.50% | Gap: 31.82% | Time: 20.86s
+
+[51/2,560] C011 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 73.14% | Validation: 47.54% | Gap: 25.59% | Time: 3.28s
+
+[52/2,560] C011 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 72.03% | Validation: 45.92% | Gap: 26.11% | Time: 3.43s
+
+[53/2,560] C011 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 72.62% | Validation: 46.00% | Gap: 26.62% | Time: 3.42s
+
+[54/2,560] C011 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 72.38% | Validation: 46.54% | Gap: 25.83% | Time: 3.06s
+
+[55/2,560] C011 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 73.27% | Validation: 47.17% | Gap: 26.10% | Time: 2.94s
+
+[56/2,560] C012 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 72.09% | Validation: 44.83% | Gap: 27.26% | Time: 4.90s
+
+[57/2,560] C012 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 73.09% | Validation: 46.38% | Gap: 26.72% | Time: 4.89s
+
+[58/2,560] C012 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 73.70% | Validation: 46.21% | Gap: 27.49% | Time: 4.80s
+
+[59/2,560] C012 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 73.35% | Validation: 46.96% | Gap: 26.40% | Time: 5.07s
+
+[60/2,560] C012 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 74.07% | Validation: 47.46% | Gap: 26.61% | Time: 5.28s
+
+[61/2,560] C013 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 75.26% | Validation: 46.33% | Gap: 28.93% | Time: 6.26s
+
+[62/2,560] C013 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 75.65% | Validation: 46.96% | Gap: 28.69% | Time: 8.15s
+
+[63/2,560] C013 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 75.07% | Validation: 46.50% | Gap: 28.57% | Time: 8.69s
+
+[64/2,560] C013 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 74.91% | Validation: 47.46% | Gap: 27.45% | Time: 9.95s
+
+[65/2,560] C013 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 74.57% | Validation: 45.29% | Gap: 29.28% | Time: 9.29s
+
+[66/2,560] C014 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 75.14% | Validation: 47.75% | Gap: 27.39% | Time: 13.19s
+
+[67/2,560] C014 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 74.27% | Validation: 46.54% | Gap: 27.73% | Time: 14.25s
+
+[68/2,560] C014 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 74.43% | Validation: 47.04% | Gap: 27.39% | Time: 23.01s
+
+[69/2,560] C014 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 75.07% | Validation: 45.75% | Gap: 29.32% | Time: 19.59s
+
+[70/2,560] C014 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 75.74% | Validation: 46.54% | Gap: 29.20% | Time: 17.36s
+
+[71/2,560] C015 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 76.86% | Validation: 47.00% | Gap: 29.86% | Time: 23.99s
+
+[72/2,560] C015 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 76.88% | Validation: 45.83% | Gap: 31.04% | Time: 27.92s
+
+[73/2,560] C015 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 77.02% | Validation: 46.21% | Gap: 30.81% | Time: 41.75s
+
+[74/2,560] C015 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 77.40% | Validation: 47.96% | Gap: 29.44% | Time: 51.64s
+
+[75/2,560] C015 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 76.61% | Validation: 44.21% | Gap: 32.41% | Time: 95.82s
+
+[76/2,560] C016 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 70.57% | Validation: 44.62% | Gap: 25.95% | Time: 12.01s
+
+[77/2,560] C016 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 72.03% | Validation: 46.33% | Gap: 25.70% | Time: 12.96s
+
+[78/2,560] C016 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 68.11% | Validation: 45.33% | Gap: 22.78% | Time: 17.71s
+
+[79/2,560] C016 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 69.41% | Validation: 46.42% | Gap: 22.99% | Time: 16.65s
+
+[80/2,560] C016 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 72.10% | Validation: 43.50% | Gap: 28.60% | Time: 21.25s
+
+[81/2,560] C017 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 71.83% | Validation: 46.38% | Gap: 25.46% | Time: 25.54s
+
+[82/2,560] C017 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 73.00% | Validation: 45.46% | Gap: 27.54% | Time: 21.64s
+
+[83/2,560] C017 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 70.86% | Validation: 46.54% | Gap: 24.32% | Time: 41.27s
+
+[84/2,560] C017 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 71.44% | Validation: 46.29% | Gap: 25.15% | Time: 77.23s
+
+[85/2,560] C017 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 73.07% | Validation: 44.67% | Gap: 28.41% | Time: 32.37s
+
+[86/2,560] C018 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 72.85% | Validation: 47.58% | Gap: 25.27% | Time: 33.58s
+
+[87/2,560] C018 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 71.70% | Validation: 47.21% | Gap: 24.49% | Time: 11.60s
+
+[88/2,560] C018 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 71.73% | Validation: 45.75% | Gap: 25.98% | Time: 37.06s
+
+[89/2,560] C018 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 72.48% | Validation: 45.21% | Gap: 27.27% | Time: 50.36s
+
+[90/2,560] C018 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 72.97% | Validation: 46.54% | Gap: 26.43% | Time: 15.15s
+
+[91/2,560] C019 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 72.91% | Validation: 45.17% | Gap: 27.74% | Time: 19.30s
+
+[92/2,560] C019 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 74.00% | Validation: 45.62% | Gap: 28.38% | Time: 19.89s
+
+[93/2,560] C019 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 73.97% | Validation: 46.62% | Gap: 27.34% | Time: 47.85s
+
+[94/2,560] C019 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 74.09% | Validation: 46.71% | Gap: 27.39% | Time: 66.79s
+
+[95/2,560] C019 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 73.71% | Validation: 46.62% | Gap: 27.08% | Time: 72.32s
+
+[96/2,560] C020 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 75.28% | Validation: 45.38% | Gap: 29.91% | Time: 85.17s
+
+[97/2,560] C020 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 75.58% | Validation: 48.21% | Gap: 27.38% | Time: 77.86s
+
+[98/2,560] C020 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 74.76% | Validation: 46.58% | Gap: 28.18% | Time: 592.14s
+
+[99/2,560] C020 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 75.03% | Validation: 47.58% | Gap: 27.45% | Time: 161.52s
+
+[100/2,560] C020 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 76.00% | Validation: 46.92% | Gap: 29.08% | Time: 195.15s
+
+[101/2,560] C021 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 100}
+Training: 70.83% | Validation: 45.12% | Gap: 25.71% | Time: 39.95s
+
+[102/2,560] C021 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 100}
+Training: 70.06% | Validation: 46.33% | Gap: 23.73% | Time: 109.16s
+
+[103/2,560] C021 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 100}
+Training: 72.35% | Validation: 46.08% | Gap: 26.27% | Time: 116.77s
+
+[104/2,560] C021 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 100}
+Training: 70.81% | Validation: 47.54% | Gap: 23.27% | Time: 63.07s
+
+[105/2,560] C021 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 100}
+Training: 71.25% | Validation: 45.67% | Gap: 25.58% | Time: 39.52s
+
+[106/2,560] C022 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 200}
+Training: 72.21% | Validation: 44.88% | Gap: 27.33% | Time: 70.29s
+
+[107/2,560] C022 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 200}
+Training: 73.12% | Validation: 46.29% | Gap: 26.83% | Time: 89.83s
+
+[108/2,560] C022 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 200}
+Training: 72.52% | Validation: 45.42% | Gap: 27.10% | Time: 127.02s
+
+[109/2,560] C022 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 200}
+Training: 72.65% | Validation: 46.29% | Gap: 26.35% | Time: 21.79s
+
+[110/2,560] C022 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 200}
+Training: 70.38% | Validation: 44.71% | Gap: 25.67% | Time: 634.01s
+
+[111/2,560] C023 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 250}
+Training: 72.47% | Validation: 46.12% | Gap: 26.34% | Time: 121.47s
+
+[112/2,560] C023 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 250}
+Training: 72.96% | Validation: 45.67% | Gap: 27.29% | Time: 260.59s
+
+[113/2,560] C023 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 250}
+Training: 72.64% | Validation: 44.96% | Gap: 27.68% | Time: 270.03s
+
+[114/2,560] C023 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 250}
+Training: 72.74% | Validation: 46.71% | Gap: 26.03% | Time: 344.65s
+
+[115/2,560] C023 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 250}
+Training: 73.67% | Validation: 47.38% | Gap: 26.29% | Time: 58.78s
+
+[116/2,560] C024 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 350}
+Training: 73.70% | Validation: 47.62% | Gap: 26.07% | Time: 76.16s
+
+[117/2,560] C024 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 350}
+Training: 73.56% | Validation: 46.17% | Gap: 27.40% | Time: 86.12s
+
+[118/2,560] C024 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 350}
+Training: 72.70% | Validation: 47.33% | Gap: 25.36% | Time: 72.26s
+
+[119/2,560] C024 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 350}
+Training: 73.32% | Validation: 46.62% | Gap: 26.70% | Time: 109.44s
+
+[120/2,560] C024 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': 350}
+Training: 73.84% | Validation: 47.62% | Gap: 26.22% | Time: 147.45s
+
+[121/2,560] C025 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': None}
+Training: 75.07% | Validation: 45.42% | Gap: 29.66% | Time: 371.38s
+
+[122/2,560] C025 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': None}
+Training: 75.24% | Validation: 47.46% | Gap: 27.78% | Time: 94.39s
+
+[123/2,560] C025 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': None}
+Training: 75.43% | Validation: 46.38% | Gap: 29.05% | Time: 461.89s
+
+[124/2,560] C025 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': None}
+Training: 75.51% | Validation: 47.92% | Gap: 27.59% | Time: 253.97s
+
+[125/2,560] C025 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'gini', 'max_features': None}
+Training: 74.68% | Validation: 45.17% | Gap: 29.51% | Time: 59.66s
+
+[126/2,560] C026 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 100}
+Training: 68.88% | Validation: 45.50% | Gap: 23.37% | Time: 2.78s
+
+[127/2,560] C026 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 100}
+Training: 69.57% | Validation: 44.00% | Gap: 25.57% | Time: 2.87s
+
+[128/2,560] C026 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 100}
+Training: 70.44% | Validation: 45.67% | Gap: 24.77% | Time: 2.96s
+
+[129/2,560] C026 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 100}
+Training: 69.82% | Validation: 44.79% | Gap: 25.03% | Time: 2.81s
+
+[130/2,560] C026 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 100}
+Training: 68.34% | Validation: 45.38% | Gap: 22.97% | Time: 2.74s
+
+[131/2,560] C027 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 200}
+Training: 71.93% | Validation: 45.71% | Gap: 26.22% | Time: 5.78s
+
+[132/2,560] C027 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 200}
+Training: 70.62% | Validation: 46.92% | Gap: 23.71% | Time: 6.06s
+
+[133/2,560] C027 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 200}
+Training: 71.68% | Validation: 45.12% | Gap: 26.55% | Time: 5.87s
+
+[134/2,560] C027 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 200}
+Training: 70.44% | Validation: 48.12% | Gap: 22.31% | Time: 5.79s
+
+[135/2,560] C027 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 200}
+Training: 70.55% | Validation: 45.83% | Gap: 24.72% | Time: 6.15s
+
+[136/2,560] C028 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 250}
+Training: 70.94% | Validation: 43.58% | Gap: 27.35% | Time: 7.12s
+
+[137/2,560] C028 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 250}
+Training: 72.30% | Validation: 46.54% | Gap: 25.76% | Time: 7.07s
+
+[138/2,560] C028 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 250}
+Training: 72.00% | Validation: 46.50% | Gap: 25.50% | Time: 6.71s
+
+[139/2,560] C028 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 250}
+Training: 71.26% | Validation: 46.12% | Gap: 25.14% | Time: 6.68s
+
+[140/2,560] C028 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 250}
+Training: 71.44% | Validation: 47.62% | Gap: 23.81% | Time: 6.88s
+
+[141/2,560] C029 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 350}
+Training: 72.54% | Validation: 43.83% | Gap: 28.71% | Time: 9.35s
+
+[142/2,560] C029 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 350}
+Training: 73.05% | Validation: 45.88% | Gap: 27.18% | Time: 9.69s
+
+[143/2,560] C029 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 350}
+Training: 72.11% | Validation: 45.83% | Gap: 26.28% | Time: 9.87s
+
+[144/2,560] C029 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 350}
+Training: 71.39% | Validation: 48.08% | Gap: 23.30% | Time: 10.81s
+
+[145/2,560] C029 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': 350}
+Training: 71.72% | Validation: 48.75% | Gap: 22.97% | Time: 12.73s
+
+[146/2,560] C030 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': None}
+Training: 74.10% | Validation: 45.08% | Gap: 29.02% | Time: 102.33s
+
+[147/2,560] C030 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': None}
+Training: 74.71% | Validation: 46.67% | Gap: 28.04% | Time: 120.90s
+
+[148/2,560] C030 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': None}
+Training: 73.66% | Validation: 46.96% | Gap: 26.70% | Time: 709.06s
+
+[149/2,560] C030 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': None}
+Training: 73.58% | Validation: 47.75% | Gap: 25.83% | Time: 1335.90s
+
+[150/2,560] C030 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 20, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': None}
+Training: 74.61% | Validation: 46.83% | Gap: 27.78% | Time: 924.24s
+
+[151/2,560] C031 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 69.09% | Validation: 45.58% | Gap: 23.51% | Time: 113.49s
+
+[152/2,560] C031 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 68.71% | Validation: 45.42% | Gap: 23.29% | Time: 117.07s
+
+[153/2,560] C031 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 67.22% | Validation: 47.58% | Gap: 19.64% | Time: 84.19s
+
+[154/2,560] C031 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 68.79% | Validation: 45.79% | Gap: 23.00% | Time: 104.79s
+
+[155/2,560] C031 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 100}
+Training: 68.72% | Validation: 46.96% | Gap: 21.76% | Time: 84.63s
+
+[156/2,560] C032 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 69.76% | Validation: 48.04% | Gap: 21.72% | Time: 39.40s
+
+[157/2,560] C032 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 70.96% | Validation: 47.08% | Gap: 23.88% | Time: 41.04s
+
+[158/2,560] C032 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 69.27% | Validation: 45.04% | Gap: 24.23% | Time: 23.80s
+
+[159/2,560] C032 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 69.86% | Validation: 47.58% | Gap: 22.28% | Time: 13.24s
+
+[160/2,560] C032 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 200}
+Training: 70.73% | Validation: 46.33% | Gap: 24.40% | Time: 10.41s
+
+[161/2,560] C033 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 70.50% | Validation: 43.29% | Gap: 27.21% | Time: 18.53s
+
+[162/2,560] C033 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 70.28% | Validation: 45.50% | Gap: 24.78% | Time: 38.91s
+
+[163/2,560] C033 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 70.33% | Validation: 47.46% | Gap: 22.88% | Time: 23.92s
+
+[164/2,560] C033 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 70.99% | Validation: 48.96% | Gap: 22.03% | Time: 144.45s
+
+[165/2,560] C033 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 250}
+Training: 69.71% | Validation: 47.25% | Gap: 22.46% | Time: 19.94s
+
+[166/2,560] C034 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 72.11% | Validation: 47.38% | Gap: 24.74% | Time: 33.82s
+
+[167/2,560] C034 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 70.84% | Validation: 46.04% | Gap: 24.80% | Time: 26.36s
+
+[168/2,560] C034 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 71.71% | Validation: 44.46% | Gap: 27.25% | Time: 25.78s
+
+[169/2,560] C034 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 72.09% | Validation: 43.96% | Gap: 28.14% | Time: 33.63s
+
+[170/2,560] C034 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': 350}
+Training: 71.70% | Validation: 45.38% | Gap: 26.32% | Time: 38.62s
+
+[171/2,560] C035 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 72.83% | Validation: 47.62% | Gap: 25.21% | Time: 105.87s
+
+[172/2,560] C035 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 73.59% | Validation: 46.17% | Gap: 27.43% | Time: 150.46s
+
+[173/2,560] C035 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 71.95% | Validation: 47.33% | Gap: 24.61% | Time: 70.51s
+
+[174/2,560] C035 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 73.33% | Validation: 48.58% | Gap: 24.75% | Time: 45.31s
+
+[175/2,560] C035 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'gini', 'max_features': None}
+Training: 72.57% | Validation: 44.96% | Gap: 27.61% | Time: 26.97s
+
+[176/2,560] C036 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 67.29% | Validation: 46.75% | Gap: 20.54% | Time: 4.09s
+
+[177/2,560] C036 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 66.06% | Validation: 44.79% | Gap: 21.27% | Time: 6.62s
+
+[178/2,560] C036 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 67.17% | Validation: 45.33% | Gap: 21.83% | Time: 14.77s
+
+[179/2,560] C036 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 66.09% | Validation: 46.75% | Gap: 19.34% | Time: 16546.27s
+
+[180/2,560] C036 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 100}
+Training: 65.91% | Validation: 46.00% | Gap: 19.91% | Time: 13.98s
+
+[181/2,560] C037 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 68.84% | Validation: 45.25% | Gap: 23.59% | Time: 36.70s
+
+[182/2,560] C037 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 68.06% | Validation: 46.71% | Gap: 21.35% | Time: 27.04s
+
+[183/2,560] C037 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 68.16% | Validation: 48.04% | Gap: 20.11% | Time: 56.38s
+
+[184/2,560] C037 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 66.91% | Validation: 47.04% | Gap: 19.86% | Time: 34.38s
+
+[185/2,560] C037 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 200}
+Training: 66.99% | Validation: 46.08% | Gap: 20.91% | Time: 55.53s
+
+[186/2,560] C038 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 68.32% | Validation: 45.79% | Gap: 22.53% | Time: 30.87s
+
+[187/2,560] C038 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 68.70% | Validation: 48.17% | Gap: 20.53% | Time: 31.46s
+
+[188/2,560] C038 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 68.39% | Validation: 44.88% | Gap: 23.51% | Time: 51.98s
+
+[189/2,560] C038 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 68.90% | Validation: 45.42% | Gap: 23.48% | Time: 122.65s
+
+[190/2,560] C038 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 250}
+Training: 69.54% | Validation: 47.83% | Gap: 21.71% | Time: 129.64s
+
+[191/2,560] C039 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 69.69% | Validation: 45.67% | Gap: 24.02% | Time: 194.48s
+
+[192/2,560] C039 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 69.00% | Validation: 46.00% | Gap: 23.00% | Time: 200.32s
+
+[193/2,560] C039 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 69.60% | Validation: 47.67% | Gap: 21.94% | Time: 256.72s
+
+[194/2,560] C039 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 69.12% | Validation: 45.96% | Gap: 23.17% | Time: 205.83s
+
+[195/2,560] C039 | seed=42 | fold=5/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': 350}
+Training: 68.38% | Validation: 46.42% | Gap: 21.96% | Time: 160.69s
+
+[196/2,560] C040 | seed=42 | fold=1/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 69.54% | Validation: 45.38% | Gap: 24.17% | Time: 73.33s
+
+[197/2,560] C040 | seed=42 | fold=2/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 70.93% | Validation: 48.38% | Gap: 22.55% | Time: 331.49s
+
+[198/2,560] C040 | seed=42 | fold=3/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+Training: 70.30% | Validation: 46.29% | Gap: 24.01% | Time: 206.22s
+
+[199/2,560] C040 | seed=42 | fold=4/5
+Parameters: {'max_depth': 10, 'min_samples_split': 40, 'min_samples_leaf': 5, 'criterion': 'entropy', 'max_features': None}
+
+Experiment interrupted. Completed fits remain in the CSV checkpoint.
