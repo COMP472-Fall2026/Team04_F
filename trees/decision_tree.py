@@ -7,12 +7,13 @@ from collections import Counter
 from common import get_task_data, accuracy, set_seed
 
 class Node:
-    def __init__(self, feature_index=None, threshold=None, left=None,right=None,value=None):
+    def __init__(self, feature_index=None, threshold=None, left=None,right=None,value=None, random_state=None):
         self.feature_index = feature_index
         self.threshold = threshold #Threshold(Symbol: S), is the pivot value for our splitting
         self.left = left
         self.right = right
         self.value = value
+        self.random_state = random_state
 
 class DecisionTree:
     def __init__(self, max_depth=10, min_samples_split=2, min_samples_leaf=1,max_features=None, criterion="entropy"):
@@ -28,6 +29,7 @@ class DecisionTree:
 
     def fit(self, X, y):
         """Encapsulate the decision tree training process with the methods within its body"""
+        self._rng = np.random.default_rng(self.random_state)
         self.root = self._grow_tree(X, y, depth=0)
         return self #Not a neccesary return, just allows for chaining such as *** tree = DecisionTree().fit(X, y) ***
 
@@ -79,8 +81,28 @@ class DecisionTree:
         best_threshold = None
 
         parent_impurity = self._impurity_from_counts(total_counts)
+        
+        #Determine how many features to consider
+        if self.max_features is None:
+            n_features = number_of_features
+        elif self.max_features == "sqrt":
+            n_features = max(1, int(np.sqrt(number_of_features)))
+        elif self.max_features == "log2":
+            n_features = max(1, int(np.log2(number_of_features)))
+        elif isinstance(self.max_features, (float, np.floating)):
+            if not 0 < self.max_features <= 1:
+                raise ValueError("Fractional max_features must be in (0, 1]")
+            n_features = max(1, int(self.max_features * number_of_features))
+        else:
+            n_features = int(self.max_features)
+            if n_features < 1:
+                raise ValueError("max_features must be positive")
+            n_features = min(n_features, number_of_features)
 
-        for feature_index in range(number_of_features):
+        # Randomly select features for this node
+        feature_indices = self._rng.choice(number_of_features, size=n_features,replace=False)
+
+        for feature_index in range(feature_indices):
             sorted_indices = np.argsort(X[:, feature_index]) #Sorted_indices according to the given feature
             sorted_values = X[sorted_indices, feature_index] #Sorted_values contains the feature values associated to each index in sorted_indices
             sorted_labels = label_codes[sorted_indices] #Sorted_labels contains the label values associated to each index in sorted_indices
