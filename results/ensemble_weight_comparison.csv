@@ -1,0 +1,13 @@
+knn_weight,nn_weight,image_validation_accuracy,correct_images,validation_images,sentiment_method
+1.0,0.0,0.60225,2409,4000,KNN unchanged
+0.95,0.05,0.60475,2419,4000,KNN unchanged
+0.9,0.1,0.60725,2429,4000,KNN unchanged
+0.8,0.2,0.6095,2438,4000,KNN unchanged
+0.75,0.25,0.61325,2453,4000,KNN unchanged
+0.7,0.3,0.617,2468,4000,KNN unchanged
+0.65,0.35,0.61625,2465,4000,KNN unchanged
+0.6,0.4,0.61025,2441,4000,KNN unchanged
+0.55,0.45,0.6025,2410,4000,KNN unchanged
+0.5,0.5,0.59175,2367,4000,KNN unchanged
+0.25,0.75,0.44725,1789,4000,KNN unchanged
+0.0,1.0,0.3665,1466,4000,KNN unchanged

@@ -1,0 +1,14 @@
+{
+  "task": "sentiment",
+  "source": "Existing per-tree predictions; no training on real data during recovery.",
+  "provenance": [
+    {
+      "commit": "dc5785d6288f4b470cc307bcf5a065925735c31a",
+      "line_ending": "LF",
+      "signature": "5f6f8103cbee6c4149f37d719d5aa14a574ebd88fd899e3455768141bac40c49"
+    }
+  ],
+  "validation": "First fold exactly matches common.py stratified 80/20 split; all folds used for tuning evaluation.",
+  "classifier_version": "Historical source matching cache signature, preserved in local snapshot.",
+  "experiment_outputs": ".cache/ensemble_experiment/recovered_forest/rebuilt/sentiment"
+}

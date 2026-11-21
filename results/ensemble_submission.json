@@ -1,0 +1,78 @@
+{
+  "reported_kaggle_score": 0.65,
+  "score_source": "User-reported score for ensemble_image_70_30_knn_sentiment.csv",
+  "entry_point": "ensemble.py",
+  "image_weights": {
+    "knn": 0.7,
+    "neural_net": 0.3
+  },
+  "sentiment_model": "KNN without blending",
+  "knn_settings": {
+    "image": {
+      "k": 20,
+      "power": 64
+    },
+    "sentiment": {
+      "k": 200,
+      "power": 0
+    }
+  },
+  "knn_preprocessing": {
+    "image": {
+      "power_transform": 0.5,
+      "l2_normalize": true,
+      "appended_lda_dimensions": 49,
+      "shrinkage": 1000.0,
+      "lda_weight": 0.5
+    },
+    "sentiment": {
+      "lda_dimensions": 2,
+      "shrinkage": 0.1
+    }
+  },
+  "image_nn": {
+    "configuration": {
+      "hidden": [
+        512,
+        256
+      ],
+      "activation": "relu",
+      "learning_rate": 0.001,
+      "optimizer": "adam",
+      "batch_size": 128,
+      "epochs": 80,
+      "patience": 12,
+      "weight_decay": 0.0001,
+      "dropout": 0.2,
+      "standardize": true,
+      "batch_norm": true,
+      "early_stopping_metric": "accuracy"
+    },
+    "full_training_epochs": 13,
+    "seed": 42,
+    "training_scope": "all_labeled_data"
+  },
+  "local_validation": {
+    "image": 0.617,
+    "sentiment": 0.6745833333333333,
+    "equal_mean": 0.6457916666666667,
+    "split_seed": 42,
+    "validation_fraction": 0.2
+  },
+  "submission_rows": 10000,
+  "submission_sha256": "5d7a69fbb6271e675b04dd9923cdbeea62be92db7a0fa69b89629ddd22fc6fb5",
+  "reproduction_check": "Both an existing checkpoint and a freshly retrained image NN produced byte-identical copies of the submitted CSV.",
+  "input_data_sha256": {
+    "image_test.csv": "4132d9813c0a746d73d160646c2174242ef64949ae4f260d6717245da7a1e88c",
+    "image_train.csv": "41e0ef407a3825200f967a2fbfb629a88c50cd40714c9e654dee0c1d8e1c614d",
+    "sample_submission.csv": "c2151d3c007fa7103be9f3586d31129de808875a8353232fd26bd5ea785baa26",
+    "sentiment_test.csv": "4bf796fdc80e719734b28f8930f07447b251490da9221dbff021defcfa7709d3",
+    "sentiment_train.csv": "d3cf389eaba7f306bf53a4b4daa9cf4d45da83cb8eaad9213bec1d410785cc23"
+  },
+  "implementation_sha256": {
+    "ensemble.py": "b9a18e8b60478842dd2c0bfb7c838d0b4c4e2c0ff27098c389e078a157afc7b3",
+    "knn.py": "9a00c0c92f1127b4354ee55e48ae9f4fc7c6475bd4d6e05a70c34c7559f55f59",
+    "neural_net.py": "864724f97ebb31ce5ced860c2328fc8b395584ac6bf39f4ac17f2dacf081ba31",
+    "common.py": "84d65b0e662606979139055917b19079bf8eb22066a4ac9c69d289cfa7290d7f"
+  }
+}

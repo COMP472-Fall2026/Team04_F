@@ -39,7 +39,7 @@ record the evaluation protocol alongside each score.
 | k-NN | 60.225% | 67.458% | Shared stratified 80/20 split, seed 42 |
 | Neural network | 36.650% | 68.042% | Shared stratified 80/20 split, seed 42 |
 | Decision tree | 12.93% | 48.26% | Five-fold means across five tree seeds |
-| Random forest | Summary missing | Summary missing | Staged tuning; final CSV summaries are not in this checkout |
+| Random forest (recovered) | 29.545% | 61.000% | Five-fold means from the verified historical experiment |
 
 The KNN accuracies are calculated from the saved validation predictions using
 the shared split. NN measurements are in
@@ -49,6 +49,18 @@ and [sentiment log](trees/results/sentiment/tree_grid_sentiment_5fold_nonredunda
 The tree logs report standard deviations of 0.38 and 1.22 percentage points,
 respectively. Use the same validation protocol when comparing methods for the
 final model choice. These scores were used during tuning and selection.
+
+The recovered forest results are in the [image CV summary](forests/results/forest_v1/image/stage5_cv_summary.csv)
+and [sentiment CV summary](forests/results/forest_v1/sentiment/stage5_cv_summary.csv).
+Their data and source signatures match the original code at commit `dc5785d`.
+They describe that historical classifier version. No real-data training was
+performed during recovery; recorded timings come from the original runs.
+
+[results/recovered_model_comparison.csv](results/recovered_model_comparison.csv)
+compares KNN, NN, recovered forests, and forest-matched single trees on the
+same 80/20 validation rows. The first cached forest fold matches the shared
+split exactly. The matched single trees use the forest's structural settings;
+they are separate references from the tuned decision-tree configurations above.
 
 ## k-NN (Ethan Elkaim)
 
@@ -99,6 +111,47 @@ and their combined prediction file are in
 python -m unittest discover -s tests -p 'test_neural_net.py'
 ```
 
+## Ensemble submission
+
+[ensemble.py](ensemble.py) generates the 70% KNN / 30% NN image blend and uses
+KNN alone for sentiment. It loads each task's CSV separately, applies that
+model's preprocessing, combines the image class scores, and joins both tasks'
+predictions to the sample submission IDs. The script fits the final KNN models
+from the supplied data; saved KNN predictions and files under `.cache/` are not
+required.
+
+First run the image training command in
+[Reproduce the selected models](NEURAL_NETWORK.md#reproduce-the-selected-models).
+Then use its full-data checkpoint:
+
+```bash
+python ensemble.py \
+    --image-checkpoint results/neural_net/reproduce_image/image/final_model.pt \
+    --output-name ensemble_reproduced.csv
+```
+
+This writes `submissions/ensemble_reproduced.csv`. Use `--nn-weight` to change
+the image NN weight; the default is 0.3. Sentiment remains KNN.
+The [submission record](results/ensemble_submission.json) stores the selected
+settings, data/source hashes, reported score, and expected CSV hash. Reproduction
+was checked both with the original checkpoint and with a freshly retrained image
+NN; both produced a byte-identical copy of the 0.650 submission.
+To reproduce the validation weight sweep, use the training-split checkpoint:
+
+```bash
+python ensemble.py \
+    --image-checkpoint results/neural_net/reproduce_image/image/baseline/validation_model.pt \
+    --validate --sweep
+```
+
+The sweep writes `results/ensemble_validation.csv`. Validation fits KNN
+preprocessing on training rows only; submission generation uses all labeled rows.
+Run NN and ensemble tests with:
+
+```bash
+python -m unittest discover -s tests -p 'test_*.py'
+```
+
 ## Decision tree and random forest
 
 The NumPy implementations are in `trees/decision_tree.py` and
@@ -124,10 +177,15 @@ Set `task` and the `DecisionTree(...)` arguments in the prediction entry point
 to the appropriate row. Its current arguments match the image configuration.
 Changing only `task` does not load the sentiment configuration.
 
-The random-forest prediction entry point currently uses 25 trees, depth 40,
+The random-forest prediction entry point currently uses 200 trees, depth 60,
 minimum split size 20, minimum leaf size 5, Gini impurity, `max_features="sqrt"`,
-bootstrap sampling, and seed 42. These are its default settings; the selected
-forest configuration needs to be documented from the missing experiment summaries.
+no bootstrap sampling, and seed 42. These parameters match the recovered image
+winner. The recovered sentiment winner combines 150 trees with minimum split
+size 20 and 50 trees with minimum split size 80; both groups use depth 10,
+minimum leaf size 5, Gini impurity, `max_features="sqrt"`, and bootstrap sampling.
+The CV summary's `components` field records the complete configurations.
+The prediction entry point uses the current classifier code; reproducing the
+archived measurements requires the original source version recorded above.
 
 For decision-tree validation experiments:
 
@@ -199,10 +257,39 @@ The joint report and presentation must cover all algorithms, clustering, error
 analysis, the final model choice, and division of work. Neural-network references
 are recorded in `NEURAL_NETWORK.md`.
 
-Before the team submission, add the missing tree grid/finalist CSV summaries
-and forest stage summaries, then complete the forest row above. The ignore
-rules allow these selected summaries under `trees/results/<task>/` and
-`forests/results/<run-name>/<task>/`; tree-vote caches and per-example forest
-predictions remain ignored. Document the final image and sentiment predictors,
-their combined submission command and score, and the team members' contributions
-in the joint report. The final model choice remains open.
+The recovered tree grid and finalist tables are under `trees/results/<task>/`.
+They reconstruct 2,560 completed fits per task from the saved output logs.
+Their training measurements retain the logs' rounding limits; validation
+accuracies use correct counts reconstructed from the known fold sizes.
+Each folder's `recovery_manifest.json` records the source and precision limits.
+Recovered forest stage summaries and confusion matrices are under
+`forests/results/forest_v1/<task>/`, with source metadata in `recovery_manifest.json`.
+Tree-vote caches and per-example forest predictions remain ignored.
+
+The reported Kaggle checks are:
+
+| Image predictions | Sentiment predictions | Reported Kaggle score |
+| --- | --- | ---: |
+| KNN | KNN | 0.647 |
+| 65% KNN / 35% NN class scores | NN | 0.641 |
+| 65% KNN / 35% NN class scores | KNN | 0.648 |
+| 70% KNN / 30% NN class scores | KNN | 0.650 |
+
+The highest-scoring reported file is
+`submissions/ensemble_image_70_30_knn_sentiment.csv`. It blends image KNN/NN
+class scores with weights 70/30 and uses the original KNN sentiment predictions.
+Both image models process every image; 70/30 are weights on their class scores.
+The class with the highest combined score is selected. Sentiment predictions
+remain identical to the KNN baseline.
+
+The 65/35 weights had the highest image validation accuracy in the initial
+eight-ratio sweep. A later nearby-weight check reached 61.700% with 70/30,
+compared with 61.625% for 65/35: three additional correct validation images.
+The [weight comparison](results/ensemble_weight_comparison.csv) records both
+sweeps. The 70/30 candidate subsequently received a reported Kaggle score of
+0.650; its equally weighted local validation accuracy is 64.579%.
+
+Document the final image and sentiment predictors, their combined submission
+command and score, and the team members' contributions in the joint report.
+The 70/30 image blend with KNN sentiment has the highest reported Kaggle score so far;
+the final model choice remains open.

@@ -1,0 +1,4 @@
+config_id,max_depth,min_samples_split,min_samples_leaf,criterion,max_features,runs,tree_seeds,mean_reported_training_accuracy,mean_validation_accuracy,std_validation_accuracy,mean_reported_training_time_seconds
+C475,60,80,10,gini,,25,"42,123,456,789,1024",0.27731999999999996,0.12930000000000003,0.0038483762809787747,41.8032
+C445,60,40,10,gini,,25,"42,123,456,789,1024",0.32638,0.12865000000000001,0.004641120554348921,44.395999999999994
+C465,60,80,5,gini,,25,"42,123,456,789,1024",0.30034,0.1284,0.005640478703088955,48.98040000000001

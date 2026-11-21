@@ -1,0 +1,19 @@
+{
+  "source_log": "trees/results/sentiment/tree_grid_sentiment_5fold_nonredundant_output.txt",
+  "source_log_sha256": "418add7cfba49d9dc1087028e6d9ca0a1411d12a999925ede5d8a488bdd6dcc1",
+  "completed_runs": 2560,
+  "grid_configurations": 500,
+  "finalist_configurations": 3,
+  "reported_selected_configuration": {
+    "id": "C095",
+    "parameters": {
+      "max_depth": 10,
+      "min_samples_split": 80,
+      "min_samples_leaf": 40,
+      "criterion": "gini",
+      "max_features": null
+    }
+  },
+  "precision": "Training accuracies and times are averages of rounded printed values. Validation correct counts are reconstructed from known fold sizes; printed rounding error is smaller than one validation example.",
+  "limitation": "These tables reconstruct the historical logged study; no new fitting was performed and original full-precision training measurements are unavailable."
+}

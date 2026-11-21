@@ -1,0 +1,14 @@
+{
+  "task": "image",
+  "source": "Existing per-tree predictions; no training on real data during recovery.",
+  "provenance": [
+    {
+      "commit": "dc5785d6288f4b470cc307bcf5a065925735c31a",
+      "line_ending": "LF",
+      "signature": "6eebc6de26d8bcaeb0e0bfb30827e242f3d08d69de617517b865b70fceb4b861"
+    }
+  ],
+  "validation": "First fold exactly matches common.py stratified 80/20 split; all folds used for tuning evaluation.",
+  "classifier_version": "Historical source matching cache signature, preserved in local snapshot.",
+  "experiment_outputs": ".cache/ensemble_experiment/recovered_forest/rebuilt/image"
+}
